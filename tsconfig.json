@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowJs": true, // Allows JavaScript files to coexist with TypeScript
+    "outDir": "./dist", // Output directory
+    "module": "ESNext", // or "CommonJS" if your project uses it
+    "target": "ES6",
+    "jsx": "react",
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
