@@ -62,7 +62,7 @@ import Arrow from "./Arrow.js";
 import Slider from "./Slider.js";
 import Camera from "./Camera.js";
 import Simulator from "./Simulator.js";
-import Profile from "./Profile.js";
+import Profile from "./Profile.ts";
 
 const main = function () {
   const simulatorCanvas = document.getElementById(SIMULATOR_CANVAS_ID),
