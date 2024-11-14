@@ -1,7 +1,4 @@
-// Define types for vectors and matrices
-type Vector3 = [number, number, number];
-type Vector4 = [number, number, number, number];
-type Matrix4 = Float32Array;
+import { Matrix4, Vector3, Vector4 } from "./types";
 
 // Vector operations
 export const addToVector = (out: Vector3, a: Vector3, b: Vector3): Vector3 => {

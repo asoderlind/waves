@@ -19,9 +19,9 @@ import {
 } from "./mathUtils";
 
 import { setTransformOrigin, setTransform } from "./shared";
+import { Vector3 } from "./types";
 
 // Define types for vectors
-type Vector3 = [number, number, number];
 
 class Arrow {
   private arrow: Vector3;
