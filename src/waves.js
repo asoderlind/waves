@@ -1,9 +1,9 @@
 //shared
-var INITIAL_SIZE = 250,
-  INITIAL_WIND = [5.0, 10.0],
+const INITIAL_SIZE = 250,
+  INITIAL_WIND = [10.0, 10.0],
   INITIAL_CHOPPINESS = 1.5;
 
-var CLEAR_COLOR = [1.0, 1.0, 1.0, 0.0],
+const CLEAR_COLOR = [1.0, 1.0, 1.0, 0.0],
   GEOMETRY_ORIGIN = [-1000.0, -1000.0],
   SUN_DIRECTION = [-1.0, 1.0, 1.0],
   OCEAN_COLOR = [0.004, 0.016, 0.047],
@@ -13,11 +13,11 @@ var CLEAR_COLOR = [1.0, 1.0, 1.0, 0.0],
   GEOMETRY_SIZE = 2000,
   RESOLUTION = 512;
 
-var SIZE_OF_FLOAT = 4;
+const SIZE_OF_FLOAT = 4;
 
-var OCEAN_COORDINATES_UNIT = 1;
+const OCEAN_COORDINATES_UNIT = 1;
 
-var INITIAL_SPECTRUM_UNIT = 0,
+const INITIAL_SPECTRUM_UNIT = 0,
   SPECTRUM_UNIT = 1,
   DISPLACEMENT_MAP_UNIT = 2,
   NORMAL_MAP_UNIT = 3,
@@ -26,9 +26,9 @@ var INITIAL_SPECTRUM_UNIT = 0,
   PING_TRANSFORM_UNIT = 6,
   PONG_TRANSFORM_UNIT = 7;
 
-var UI_COLOR = "rgb(52, 137, 189)";
+const UI_COLOR = "rgb(52, 137, 189)";
 
-var PROFILE_AMPLITUDE = 50,
+const PROFILE_AMPLITUDE = 50,
   PROFILE_OMEGA = 0.05,
   PROFILE_PHI = -2.5,
   PROFILE_STEP = 5,
@@ -37,7 +37,7 @@ var PROFILE_AMPLITUDE = 50,
   PROFILE_LINE_WIDTH = 3,
   CHOPPINESS_SCALE = 0.15;
 
-var ARROW_ORIGIN = [-1250, 0, 500],
+const ARROW_ORIGIN = [-1250, 0, 500],
   ARROW_SHAFT_WIDTH = 80,
   ARROW_HEAD_WIDTH = 160,
   ARROW_HEAD_HEIGHT = 60,
@@ -46,26 +46,26 @@ var ARROW_ORIGIN = [-1250, 0, 500],
   MIN_WIND_SPEED = 5.0,
   MAX_WIND_SPEED = 25.0;
 
-var HANDLE_COLOR = "#666666",
+const HANDLE_COLOR = "#666666",
   SLIDER_LEFT_COLOR = UI_COLOR,
   SLIDER_RIGHT_COLOR = "#999999";
 
-var FOV = (60 / 180) * Math.PI,
+const FOV = (60 / 180) * Math.PI,
   NEAR = 1,
   FAR = 10000,
   MIN_ASPECT = 16 / 9;
 
-var WIND_SPEED_DECIMAL_PLACES = 1,
+const WIND_SPEED_DECIMAL_PLACES = 1,
   SIZE_DECIMAL_PLACES = 0,
   CHOPPINESS_DECIMAL_PLACES = 1;
 
-var SENSITIVITY = 1.0;
+const SENSITIVITY = 1.0;
 
-var WIND_SPEED_X = -1350;
-var MIN_WIND_SPEED_Z = 600,
+const WIND_SPEED_X = -1350;
+const MIN_WIND_SPEED_Z = 600,
   WIND_SPEED_OFFSET = 30;
 
-var OVERLAY_DIV_ID = "overlay",
+const OVERLAY_DIV_ID = "overlay",
   PROFILE_CANVAS_ID = "profile",
   SIMULATOR_CANVAS_ID = "simulator",
   UI_DIV_ID = "ui",
@@ -74,7 +74,7 @@ var OVERLAY_DIV_ID = "overlay",
   WIND_SPEED_SPAN_ID = "wind-speed",
   CHOPPINESS_DIV_ID = "choppiness";
 
-var SIZE_SLIDER_X = -200,
+const SIZE_SLIDER_X = -200,
   SIZE_SLIDER_Z = 1100,
   SIZE_SLIDER_LENGTH = 400,
   MIN_SIZE = 100,
@@ -82,7 +82,7 @@ var SIZE_SLIDER_X = -200,
   SIZE_SLIDER_BREADTH = 3,
   SIZE_HANDLE_SIZE = 24;
 
-var CHOPPINESS_SLIDER_X = -1420,
+const CHOPPINESS_SLIDER_X = -1420,
   CHOPPINESS_SLIDER_Z = 75,
   CHOPPINESS_SLIDER_LENGTH = 300,
   MIN_CHOPPINESS = 0,
@@ -90,17 +90,17 @@ var CHOPPINESS_SLIDER_X = -1420,
   CHOPPINESS_SLIDER_BREADTH = 6,
   CHOPPINESS_HANDLE_SIZE = 30;
 
-var ARROW_TIP_RADIUS = 100,
+const ARROW_TIP_RADIUS = 100,
   SIZE_HANDLE_RADIUS = 30,
   CHOPPINESS_HANDLE_RADIUS = 100;
 
-var NONE = 0,
+const NONE = 0,
   ORBITING = 1,
   ROTATING = 2,
   SLIDING_SIZE = 3,
   SLIDING_CHOPPINESS = 4;
 
-var CAMERA_DISTANCE = 1500,
+const CAMERA_DISTANCE = 1500,
   ORBIT_POINT = [-200.0, 0.0, 600.0],
   INITIAL_AZIMUTH = 0.4,
   INITIAL_ELEVATION = 0.5,
@@ -109,28 +109,28 @@ var CAMERA_DISTANCE = 1500,
   MIN_ELEVATION = 0.4,
   MAX_ELEVATION = 0.8;
 
-var addToVector = function (out, a, b) {
+const addToVector = function (out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
   return out;
 };
 
-var subtractFromVector = function (out, a, b) {
+const subtractFromVector = function (out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
   return out;
 };
 
-var multiplyVectorByScalar = function (out, v, k) {
+const multiplyVectorByScalar = function (out, v, k) {
   out[0] = v[0] * k;
   out[1] = v[1] * k;
   out[2] = v[2] * k;
   return out;
 };
 
-var makeIdentityMatrix = function (matrix) {
+const makeIdentityMatrix = function (matrix) {
   matrix[0] = 1.0;
   matrix[1] = 0.0;
   matrix[2] = 0.0;
@@ -150,7 +150,7 @@ var makeIdentityMatrix = function (matrix) {
   return matrix;
 };
 
-var makeXRotationMatrix = function (matrix, angle) {
+const makeXRotationMatrix = function (matrix, angle) {
   matrix[0] = 1.0;
   matrix[1] = 0.0;
   matrix[2] = 0.0;
@@ -170,7 +170,7 @@ var makeXRotationMatrix = function (matrix, angle) {
   return matrix;
 };
 
-var makeYRotationMatrix = function (matrix, angle) {
+const makeYRotationMatrix = function (matrix, angle) {
   matrix[0] = Math.cos(angle);
   matrix[1] = 0.0;
   matrix[2] = -Math.sin(angle);
@@ -190,21 +190,21 @@ var makeYRotationMatrix = function (matrix, angle) {
   return matrix;
 };
 
-var distanceBetweenVectors = function (a, b) {
-  var xDist = b[0] - a[0],
+const distanceBetweenVectors = function (a, b) {
+  const xDist = b[0] - a[0],
     yDist = b[1] - a[1],
     zDist = b[2] - a[2];
   return Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist);
 };
 
-var lengthOfVector = function (v) {
-  var x = v[0],
+const lengthOfVector = function (v) {
+  const x = v[0],
     y = v[1],
     z = v[2];
   return Math.sqrt(x * x + y * y + z * z);
 };
 
-var setVector4 = function (out, x, y, z, w) {
+const setVector4 = function (out, x, y, z, w) {
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -212,16 +212,16 @@ var setVector4 = function (out, x, y, z, w) {
   return out;
 };
 
-var projectVector4 = function (out, v) {
-  var reciprocalW = 1 / v[3];
+const projectVector4 = function (out, v) {
+  const reciprocalW = 1 / v[3];
   out[0] = v[0] * reciprocalW;
   out[1] = v[1] * reciprocalW;
   out[2] = v[2] * reciprocalW;
   return out;
 };
 
-var transformVectorByMatrix = function (out, v, m) {
-  var x = v[0],
+const transformVectorByMatrix = function (out, v, m) {
+  const x = v[0],
     y = v[1],
     z = v[2],
     w = v[3];
@@ -232,8 +232,8 @@ var transformVectorByMatrix = function (out, v, m) {
   return out;
 };
 
-var invertMatrix = function (out, m) {
-  var m0 = m[0],
+const invertMatrix = function (out, m) {
+  const m0 = m[0],
     m4 = m[4],
     m8 = m[8],
     m12 = m[12],
@@ -375,8 +375,8 @@ var invertMatrix = function (out, m) {
   return out;
 };
 
-var premultiplyMatrix = function (out, matrixA, matrixB) {
-  var b0 = matrixB[0],
+const premultiplyMatrix = function (out, matrixA, matrixB) {
+  let b0 = matrixB[0],
     b4 = matrixB[4],
     b8 = matrixB[8],
     b12 = matrixB[12],
@@ -425,8 +425,8 @@ var premultiplyMatrix = function (out, matrixA, matrixB) {
   return out;
 };
 
-var makePerspectiveMatrix = function (matrix, fov, aspect, near, far) {
-  var f = Math.tan(0.5 * (Math.PI - fov)),
+const makePerspectiveMatrix = function (matrix, fov, aspect, near, far) {
+  const f = Math.tan(0.5 * (Math.PI - fov)),
     range = near - far;
 
   matrix[0] = f / aspect;
@@ -449,26 +449,26 @@ var makePerspectiveMatrix = function (matrix, fov, aspect, near, far) {
   return matrix;
 };
 
-var clamp = function (x, min, max) {
+const clamp = function (x, min, max) {
   return Math.min(Math.max(x, min), max);
 };
 
-var log2 = function (number) {
+const log2 = function (number) {
   return Math.log(number) / Math.log(2);
 };
 
-var buildProgramWrapper = function (
+const buildProgramWrapper = function (
   gl,
   vertexShader,
   fragmentShader,
   attributeLocations
 ) {
-  var programWrapper = {};
+  const programWrapper = {};
 
-  var program = gl.createProgram();
+  const program = gl.createProgram();
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
-  for (var attributeName in attributeLocations) {
+  for (const attributeName in attributeLocations) {
     gl.bindAttribLocation(
       program,
       attributeLocations[attributeName],
@@ -476,10 +476,10 @@ var buildProgramWrapper = function (
     );
   }
   gl.linkProgram(program);
-  var uniformLocations = {};
-  var numberOfUniforms = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
-  for (var i = 0; i < numberOfUniforms; i += 1) {
-    var activeUniform = gl.getActiveUniform(program, i),
+  const uniformLocations = {};
+  const numberOfUniforms = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
+  for (let i = 0; i < numberOfUniforms; i += 1) {
+    const activeUniform = gl.getActiveUniform(program, i),
       uniformLocation = gl.getUniformLocation(program, activeUniform.name);
     uniformLocations[activeUniform.name] = uniformLocation;
   }
@@ -490,14 +490,14 @@ var buildProgramWrapper = function (
   return programWrapper;
 };
 
-var buildShader = function (gl, type, source) {
-  var shader = gl.createShader(type);
+const buildShader = function (gl, type, source) {
+  const shader = gl.createShader(type);
   gl.shaderSource(shader, source);
   gl.compileShader(shader);
   return shader;
 };
 
-var buildTexture = function (
+const buildTexture = function (
   gl,
   unit,
   format,
@@ -510,7 +510,7 @@ var buildTexture = function (
   minFilter,
   magFilter
 ) {
-  var texture = gl.createTexture();
+  const texture = gl.createTexture();
   gl.activeTexture(gl.TEXTURE0 + unit);
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.texImage2D(gl.TEXTURE_2D, 0, format, width, height, 0, format, type, data);
@@ -521,8 +521,8 @@ var buildTexture = function (
   return texture;
 };
 
-var buildFramebuffer = function (gl, attachment) {
-  var framebuffer = gl.createFramebuffer();
+const buildFramebuffer = function (gl, attachment) {
+  const framebuffer = gl.createFramebuffer();
   gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
   gl.framebufferTexture2D(
     gl.FRAMEBUFFER,
@@ -534,11 +534,11 @@ var buildFramebuffer = function (gl, attachment) {
   return framebuffer;
 };
 
-var epsilon = function (x) {
+const epsilon = function (x) {
   return Math.abs(x) < 0.000001 ? 0 : x;
 };
 
-var toCSSMatrix = function (m) {
+const toCSSMatrix = function (m) {
   //flip y to make css and webgl coordinates consistent
   return (
     "matrix3d(" +
@@ -577,36 +577,36 @@ var toCSSMatrix = function (m) {
   );
 };
 
-var setPerspective = function (element, value) {
+const setPerspective = function (element, value) {
   element.style.WebkitPerspective = value;
   element.style.perspective = value;
 };
 
-var setTransformOrigin = function (element, value) {
+const setTransformOrigin = function (element, value) {
   element.style.WebkitTransformOrigin = value;
   element.style.transformOrigin = value;
 };
 
-var setTransform = function (element, value) {
+const setTransform = function (element, value) {
   element.style.WebkitTransform = value;
   element.style.transform = value;
 };
 
-var setText = function (element, value, decimalPlaces) {
+const setText = function (element, value, decimalPlaces) {
   element.textContent = value.toFixed(decimalPlaces);
 };
 
-var getMousePosition = function (event, element) {
-  var boundingRect = element.getBoundingClientRect();
+const getMousePosition = function (event, element) {
+  const boundingRect = element.getBoundingClientRect();
   return {
     x: event.clientX - boundingRect.left,
     y: event.clientY - boundingRect.top,
   };
 };
 
-var hasWebGLSupportWithExtensions = function (extensions) {
-  var canvas = document.createElement("canvas");
-  var gl = null;
+const hasWebGLSupportWithExtensions = function (extensions) {
+  let canvas = document.createElement("canvas");
+  let gl = null;
   try {
     gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
   } catch (e) {
@@ -616,7 +616,7 @@ var hasWebGLSupportWithExtensions = function (extensions) {
     return false;
   }
 
-  for (var i = 0; i < extensions.length; ++i) {
+  for (let i = 0; i < extensions.length; ++i) {
     if (gl.getExtension(extensions[i]) === null) {
       return false;
     }
@@ -625,78 +625,80 @@ var hasWebGLSupportWithExtensions = function (extensions) {
   return true;
 };
 
-var requestAnimationFrame =
+const requestAnimationFrame =
   window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   window.msRequestAnimationFrame;
 
 // simulation.js
-var Camera = function () {
-  var azimuth = INITIAL_AZIMUTH,
-    elevation = INITIAL_ELEVATION,
-    viewMatrix = makeIdentityMatrix(new Float32Array(16)),
-    position = new Float32Array(3),
-    changed = true;
+class Camera {
+  constructor() {
+    let azimuth = INITIAL_AZIMUTH,
+      elevation = INITIAL_ELEVATION,
+      viewMatrix = makeIdentityMatrix(new Float32Array(16)),
+      position = new Float32Array(3),
+      changed = true;
 
-  this.changeAzimuth = function (deltaAzimuth) {
-    azimuth += deltaAzimuth;
-    azimuth = clamp(azimuth, MIN_AZIMUTH, MAX_AZIMUTH);
-    changed = true;
-  };
+    this.changeAzimuth = function (deltaAzimuth) {
+      azimuth += deltaAzimuth;
+      azimuth = clamp(azimuth, MIN_AZIMUTH, MAX_AZIMUTH);
+      changed = true;
+    };
 
-  this.changeElevation = function (deltaElevation) {
-    elevation += deltaElevation;
-    elevation = clamp(elevation, MIN_ELEVATION, MAX_ELEVATION);
-    changed = true;
-  };
+    this.changeElevation = function (deltaElevation) {
+      elevation += deltaElevation;
+      elevation = clamp(elevation, MIN_ELEVATION, MAX_ELEVATION);
+      changed = true;
+    };
 
-  this.getPosition = function () {
-    return position;
-  };
+    this.getPosition = function () {
+      return position;
+    };
 
-  var orbitTranslationMatrix = makeIdentityMatrix(new Float32Array(16)),
-    xRotationMatrix = new Float32Array(16),
-    yRotationMatrix = new Float32Array(16),
-    distanceTranslationMatrix = makeIdentityMatrix(new Float32Array(16));
+    let orbitTranslationMatrix = makeIdentityMatrix(new Float32Array(16)),
+      xRotationMatrix = new Float32Array(16),
+      yRotationMatrix = new Float32Array(16),
+      distanceTranslationMatrix = makeIdentityMatrix(new Float32Array(16));
 
-  this.getViewMatrix = function () {
-    if (changed) {
-      makeIdentityMatrix(viewMatrix);
+    this.getViewMatrix = function () {
+      if (changed) {
+        makeIdentityMatrix(viewMatrix);
 
-      makeXRotationMatrix(xRotationMatrix, elevation);
-      makeYRotationMatrix(yRotationMatrix, azimuth);
-      distanceTranslationMatrix[14] = -CAMERA_DISTANCE;
-      orbitTranslationMatrix[12] = -ORBIT_POINT[0];
-      orbitTranslationMatrix[13] = -ORBIT_POINT[1];
-      orbitTranslationMatrix[14] = -ORBIT_POINT[2];
+        makeXRotationMatrix(xRotationMatrix, elevation);
+        makeYRotationMatrix(yRotationMatrix, azimuth);
+        distanceTranslationMatrix[14] = -CAMERA_DISTANCE;
+        orbitTranslationMatrix[12] = -ORBIT_POINT[0];
+        orbitTranslationMatrix[13] = -ORBIT_POINT[1];
+        orbitTranslationMatrix[14] = -ORBIT_POINT[2];
 
-      premultiplyMatrix(viewMatrix, viewMatrix, orbitTranslationMatrix);
-      premultiplyMatrix(viewMatrix, viewMatrix, yRotationMatrix);
-      premultiplyMatrix(viewMatrix, viewMatrix, xRotationMatrix);
-      premultiplyMatrix(viewMatrix, viewMatrix, distanceTranslationMatrix);
+        premultiplyMatrix(viewMatrix, viewMatrix, orbitTranslationMatrix);
+        premultiplyMatrix(viewMatrix, viewMatrix, yRotationMatrix);
+        premultiplyMatrix(viewMatrix, viewMatrix, xRotationMatrix);
+        premultiplyMatrix(viewMatrix, viewMatrix, distanceTranslationMatrix);
 
-      position[0] =
-        CAMERA_DISTANCE *
-          Math.sin(Math.PI / 2 - elevation) *
-          Math.sin(-azimuth) +
-        ORBIT_POINT[0];
-      position[1] =
-        CAMERA_DISTANCE * Math.cos(Math.PI / 2 - elevation) + ORBIT_POINT[1];
-      position[2] =
-        CAMERA_DISTANCE *
-          Math.sin(Math.PI / 2 - elevation) *
-          Math.cos(-azimuth) +
-        ORBIT_POINT[2];
+        position[0] =
+          CAMERA_DISTANCE *
+            Math.sin(Math.PI / 2 - elevation) *
+            Math.sin(-azimuth) +
+          ORBIT_POINT[0];
+        position[1] =
+          CAMERA_DISTANCE * Math.cos(Math.PI / 2 - elevation) + ORBIT_POINT[1];
+        position[2] =
+          CAMERA_DISTANCE *
+            Math.sin(Math.PI / 2 - elevation) *
+            Math.cos(-azimuth) +
+          ORBIT_POINT[2];
 
-      changed = false;
-    }
+        changed = false;
+      }
 
-    return viewMatrix;
-  };
-};
+      return viewMatrix;
+    };
+  }
+}
 
-var FULLSCREEN_VERTEX_SOURCE = [
+const FULLSCREEN_VERTEX_SOURCE = [
   "attribute vec2 a_position;",
   "varying vec2 v_coordinates;",
 
@@ -707,7 +709,7 @@ var FULLSCREEN_VERTEX_SOURCE = [
 ].join("\n");
 
 //GPU FFT using the Stockham formulation
-var SUBTRANSFORM_FRAGMENT_SOURCE = [
+const SUBTRANSFORM_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "const float PI = 3.14159265359;",
@@ -752,7 +754,7 @@ var SUBTRANSFORM_FRAGMENT_SOURCE = [
   "}",
 ].join("\n");
 
-var INITIAL_SPECTRUM_FRAGMENT_SOURCE = [
+const INITIAL_SPECTRUM_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "const float PI = 3.14159265359;",
@@ -826,7 +828,7 @@ var INITIAL_SPECTRUM_FRAGMENT_SOURCE = [
 ].join("\n");
 
 //phases stored in separate texture to ensure wave continuity on resizing
-var PHASE_FRAGMENT_SOURCE = [
+const PHASE_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "const float PI = 3.14159265359;",
@@ -860,7 +862,7 @@ var PHASE_FRAGMENT_SOURCE = [
   "}",
 ].join("\n");
 
-var SPECTRUM_FRAGMENT_SOURCE = [
+const SPECTRUM_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "const float PI = 3.14159265359;",
@@ -919,7 +921,7 @@ var SPECTRUM_FRAGMENT_SOURCE = [
 ].join("\n");
 
 //cannot use common heightmap optimisations because displacements are horizontal as well as vertical
-var NORMAL_MAP_FRAGMENT_SOURCE = [
+const NORMAL_MAP_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "varying vec2 v_coordinates;",
@@ -947,7 +949,7 @@ var NORMAL_MAP_FRAGMENT_SOURCE = [
   "}",
 ].join("\n");
 
-var OCEAN_VERTEX_SOURCE = [
+const OCEAN_VERTEX_SOURCE = [
   "precision highp float;",
 
   "attribute vec3 a_position;",
@@ -974,7 +976,7 @@ var OCEAN_VERTEX_SOURCE = [
   "}",
 ].join("\n");
 
-var OCEAN_FRAGMENT_SOURCE = [
+const OCEAN_FRAGMENT_SOURCE = [
   "precision highp float;",
 
   "varying vec2 v_coordinates;",
@@ -1011,581 +1013,552 @@ var OCEAN_FRAGMENT_SOURCE = [
   "}",
 ].join("\n");
 
-var Simulator = function (canvas, width, height) {
-  var canvas = canvas;
-  canvas.width = width;
-  canvas.height = height;
-
-  var gl =
-    canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-
-  var windX = INITIAL_WIND[0],
-    windY = INITIAL_WIND[1],
-    size = INITIAL_SIZE,
-    choppiness = INITIAL_CHOPPINESS;
-
-  var changed = true;
-
-  gl.getExtension("OES_texture_float");
-  gl.getExtension("OES_texture_float_linear");
-
-  gl.clearColor.apply(gl, CLEAR_COLOR);
-  gl.enable(gl.DEPTH_TEST);
-
-  var fullscreenVertexShader = buildShader(
-    gl,
-    gl.VERTEX_SHADER,
-    FULLSCREEN_VERTEX_SOURCE
-  );
-
-  var horizontalSubtransformProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(
-      gl,
-      gl.FRAGMENT_SHADER,
-      "#define HORIZONTAL \n" + SUBTRANSFORM_FRAGMENT_SOURCE
-    ),
-    { a_position: 0 }
-  );
-  gl.useProgram(horizontalSubtransformProgram.program);
-  gl.uniform1f(
-    horizontalSubtransformProgram.uniformLocations["u_transformSize"],
-    RESOLUTION
-  );
-
-  var verticalSubtransformProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(gl, gl.FRAGMENT_SHADER, SUBTRANSFORM_FRAGMENT_SOURCE),
-    { a_position: 0 }
-  );
-  gl.useProgram(verticalSubtransformProgram.program);
-  gl.uniform1f(
-    verticalSubtransformProgram.uniformLocations["u_transformSize"],
-    RESOLUTION
-  );
-
-  var initialSpectrumProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(gl, gl.FRAGMENT_SHADER, INITIAL_SPECTRUM_FRAGMENT_SOURCE),
-    { a_position: 0 }
-  );
-  gl.useProgram(initialSpectrumProgram.program);
-  gl.uniform1f(
-    initialSpectrumProgram.uniformLocations["u_resolution"],
-    RESOLUTION
-  );
-
-  var phaseProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(gl, gl.FRAGMENT_SHADER, PHASE_FRAGMENT_SOURCE),
-    { a_position: 0 }
-  );
-  gl.useProgram(phaseProgram.program);
-  gl.uniform1f(phaseProgram.uniformLocations["u_resolution"], RESOLUTION);
-
-  var spectrumProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(gl, gl.FRAGMENT_SHADER, SPECTRUM_FRAGMENT_SOURCE),
-    { a_position: 0 }
-  );
-  gl.useProgram(spectrumProgram.program);
-  gl.uniform1i(
-    spectrumProgram.uniformLocations["u_initialSpectrum"],
-    INITIAL_SPECTRUM_UNIT
-  );
-  gl.uniform1f(spectrumProgram.uniformLocations["u_resolution"], RESOLUTION);
-
-  var normalMapProgram = buildProgramWrapper(
-    gl,
-    fullscreenVertexShader,
-    buildShader(gl, gl.FRAGMENT_SHADER, NORMAL_MAP_FRAGMENT_SOURCE),
-    { a_position: 0 }
-  );
-  gl.useProgram(normalMapProgram.program);
-  gl.uniform1i(
-    normalMapProgram.uniformLocations["u_displacementMap"],
-    DISPLACEMENT_MAP_UNIT
-  );
-  gl.uniform1f(normalMapProgram.uniformLocations["u_resolution"], RESOLUTION);
-
-  var oceanProgram = buildProgramWrapper(
-    gl,
-    buildShader(gl, gl.VERTEX_SHADER, OCEAN_VERTEX_SOURCE),
-    buildShader(gl, gl.FRAGMENT_SHADER, OCEAN_FRAGMENT_SOURCE),
-    {
-      a_position: 0,
-      a_coordinates: OCEAN_COORDINATES_UNIT,
-    }
-  );
-  gl.useProgram(oceanProgram.program);
-  gl.uniform1f(oceanProgram.uniformLocations["u_geometrySize"], GEOMETRY_SIZE);
-  gl.uniform1i(
-    oceanProgram.uniformLocations["u_displacementMap"],
-    DISPLACEMENT_MAP_UNIT
-  );
-  gl.uniform1i(oceanProgram.uniformLocations["u_normalMap"], NORMAL_MAP_UNIT);
-  gl.uniform3f(
-    oceanProgram.uniformLocations["u_oceanColor"],
-    OCEAN_COLOR[0],
-    OCEAN_COLOR[1],
-    OCEAN_COLOR[2]
-  );
-  gl.uniform3f(
-    oceanProgram.uniformLocations["u_skyColor"],
-    SKY_COLOR[0],
-    SKY_COLOR[1],
-    SKY_COLOR[2]
-  );
-  gl.uniform3f(
-    oceanProgram.uniformLocations["u_sunDirection"],
-    SUN_DIRECTION[0],
-    SUN_DIRECTION[1],
-    SUN_DIRECTION[2]
-  );
-  gl.uniform1f(oceanProgram.uniformLocations["u_exposure"], EXPOSURE);
-
-  gl.enableVertexAttribArray(0);
-
-  var fullscreenVertexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, fullscreenVertexBuffer);
-  gl.bufferData(
-    gl.ARRAY_BUFFER,
-    new Float32Array([-1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0]),
-    gl.STATIC_DRAW
-  );
-
-  var oceanData = [];
-  for (var zIndex = 0; zIndex < GEOMETRY_RESOLUTION; zIndex += 1) {
-    for (var xIndex = 0; xIndex < GEOMETRY_RESOLUTION; xIndex += 1) {
-      oceanData.push(
-        (xIndex * GEOMETRY_SIZE) / (GEOMETRY_RESOLUTION - 1) +
-          GEOMETRY_ORIGIN[0]
-      );
-      oceanData.push(0.0);
-      oceanData.push(
-        (zIndex * GEOMETRY_SIZE) / (GEOMETRY_RESOLUTION - 1) +
-          GEOMETRY_ORIGIN[1]
-      );
-      oceanData.push(xIndex / (GEOMETRY_RESOLUTION - 1));
-      oceanData.push(zIndex / (GEOMETRY_RESOLUTION - 1));
-    }
-  }
-
-  var oceanIndices = [];
-  for (var zIndex = 0; zIndex < GEOMETRY_RESOLUTION - 1; zIndex += 1) {
-    for (var xIndex = 0; xIndex < GEOMETRY_RESOLUTION - 1; xIndex += 1) {
-      var topLeft = zIndex * GEOMETRY_RESOLUTION + xIndex,
-        topRight = topLeft + 1,
-        bottomLeft = topLeft + GEOMETRY_RESOLUTION,
-        bottomRight = bottomLeft + 1;
-
-      oceanIndices.push(topLeft);
-      oceanIndices.push(bottomLeft);
-      oceanIndices.push(bottomRight);
-      oceanIndices.push(bottomRight);
-      oceanIndices.push(topRight);
-      oceanIndices.push(topLeft);
-    }
-  }
-
-  var oceanBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, oceanBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(oceanData), gl.STATIC_DRAW);
-  gl.vertexAttribPointer(
-    OCEAN_COORDINATES_UNIT,
-    2,
-    gl.FLOAT,
-    false,
-    5 * SIZE_OF_FLOAT,
-    3 * SIZE_OF_FLOAT
-  );
-
-  var oceanIndexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, oceanIndexBuffer);
-  gl.bufferData(
-    gl.ELEMENT_ARRAY_BUFFER,
-    new Uint16Array(oceanIndices),
-    gl.STATIC_DRAW
-  );
-
-  var initialSpectrumTexture = buildTexture(
-      gl,
-      INITIAL_SPECTRUM_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.REPEAT,
-      gl.REPEAT,
-      gl.NEAREST,
-      gl.NEAREST
-    ),
-    pongPhaseTexture = buildTexture(
-      gl,
-      PONG_PHASE_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.NEAREST,
-      gl.NEAREST
-    ),
-    spectrumTexture = buildTexture(
-      gl,
-      SPECTRUM_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.NEAREST,
-      gl.NEAREST
-    ),
-    displacementMap = buildTexture(
-      gl,
-      DISPLACEMENT_MAP_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.LINEAR,
-      gl.LINEAR
-    ),
-    normalMap = buildTexture(
-      gl,
-      NORMAL_MAP_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.LINEAR,
-      gl.LINEAR
-    ),
-    pingTransformTexture = buildTexture(
-      gl,
-      PING_TRANSFORM_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.NEAREST,
-      gl.NEAREST
-    ),
-    pongTransformTexture = buildTexture(
-      gl,
-      PONG_TRANSFORM_UNIT,
-      gl.RGBA,
-      gl.FLOAT,
-      RESOLUTION,
-      RESOLUTION,
-      null,
-      gl.CLAMP_TO_EDGE,
-      gl.CLAMP_TO_EDGE,
-      gl.NEAREST,
-      gl.NEAREST
-    );
-
-  var pingPhase = true;
-
-  var phaseArray = new Float32Array(RESOLUTION * RESOLUTION * 4);
-  for (var i = 0; i < RESOLUTION; i += 1) {
-    for (var j = 0; j < RESOLUTION; j += 1) {
-      phaseArray[i * RESOLUTION * 4 + j * 4] = Math.random() * 2.0 * Math.PI;
-      phaseArray[i * RESOLUTION * 4 + j * 4 + 1] = 0;
-      phaseArray[i * RESOLUTION * 4 + j * 4 + 2] = 0;
-      phaseArray[i * RESOLUTION * 4 + j * 4 + 3] = 0;
-    }
-  }
-  var pingPhaseTexture = buildTexture(
-    gl,
-    PING_PHASE_UNIT,
-    gl.RGBA,
-    gl.FLOAT,
-    RESOLUTION,
-    RESOLUTION,
-    phaseArray,
-    gl.CLAMP_TO_EDGE,
-    gl.CLAMP_TO_EDGE,
-    gl.NEAREST,
-    gl.NEAREST
-  );
-
-  //changing framebuffers faster than changing attachments in WebGL
-  var initialSpectrumFramebuffer = buildFramebuffer(gl, initialSpectrumTexture),
-    pingPhaseFramebuffer = buildFramebuffer(gl, pingPhaseTexture),
-    pongPhaseFramebuffer = buildFramebuffer(gl, pongPhaseTexture),
-    spectrumFramebuffer = buildFramebuffer(gl, spectrumTexture),
-    displacementMapFramebuffer = buildFramebuffer(gl, displacementMap),
-    normalMapFramebuffer = buildFramebuffer(gl, normalMap),
-    pingTransformFramebuffer = buildFramebuffer(gl, pingTransformTexture),
-    pongTransformFramebuffer = buildFramebuffer(gl, pongTransformTexture);
-
-  this.setWind = function (x, y) {
-    windX = x;
-    windY = y;
-    changed = true;
-  };
-
-  this.setSize = function (newSize) {
-    size = newSize;
-    changed = true;
-  };
-
-  this.setChoppiness = function (newChoppiness) {
-    choppiness = newChoppiness;
-  };
-
-  this.resize = function (width, height) {
+class Simulator {
+  constructor(canvas, width, height) {
+    var canvas = canvas;
     canvas.width = width;
     canvas.height = height;
-  };
 
-  this.render = function (
-    deltaTime,
-    projectionMatrix,
-    viewMatrix,
-    cameraPosition
-  ) {
-    gl.viewport(0, 0, RESOLUTION, RESOLUTION);
-    gl.disable(gl.DEPTH_TEST);
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, fullscreenVertexBuffer);
-    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    const windX = INITIAL_WIND[0],
+      windY = INITIAL_WIND[1],
+      size = INITIAL_SIZE,
+      choppiness = INITIAL_CHOPPINESS;
 
-    if (changed) {
-      gl.bindFramebuffer(gl.FRAMEBUFFER, initialSpectrumFramebuffer);
-      gl.useProgram(initialSpectrumProgram.program);
-      gl.uniform2f(
-        initialSpectrumProgram.uniformLocations["u_wind"],
-        windX,
-        windY
-      );
-      gl.uniform1f(initialSpectrumProgram.uniformLocations["u_size"], size);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    }
+    let changed = true;
 
-    //store phases separately to ensure continuity of waves during parameter editing
-    gl.useProgram(phaseProgram.program);
-    gl.bindFramebuffer(
-      gl.FRAMEBUFFER,
-      pingPhase ? pongPhaseFramebuffer : pingPhaseFramebuffer
-    );
-    gl.uniform1i(
-      phaseProgram.uniformLocations["u_phases"],
-      pingPhase ? PING_PHASE_UNIT : PONG_PHASE_UNIT
-    );
-    pingPhase = !pingPhase;
-    gl.uniform1f(phaseProgram.uniformLocations["u_deltaTime"], deltaTime);
-    gl.uniform1f(phaseProgram.uniformLocations["u_size"], size);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    gl.getExtension("OES_texture_float");
+    gl.getExtension("OES_texture_float_linear");
 
-    gl.useProgram(spectrumProgram.program);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, spectrumFramebuffer);
-    gl.uniform1i(
-      spectrumProgram.uniformLocations["u_phases"],
-      pingPhase ? PING_PHASE_UNIT : PONG_PHASE_UNIT
-    );
-    gl.uniform1f(spectrumProgram.uniformLocations["u_size"], size);
-    gl.uniform1f(spectrumProgram.uniformLocations["u_choppiness"], choppiness);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    var subtransformProgram = horizontalSubtransformProgram;
-    gl.useProgram(horizontalSubtransformProgram.program);
-
-    //GPU FFT using Stockham formulation
-    var iterations = log2(RESOLUTION) * 2;
-    for (var i = 0; i < iterations; i += 1) {
-      if (i === 0) {
-        gl.bindFramebuffer(gl.FRAMEBUFFER, pingTransformFramebuffer);
-        gl.uniform1i(
-          subtransformProgram.uniformLocations["u_input"],
-          SPECTRUM_UNIT
-        );
-      } else if (i === iterations - 1) {
-        gl.bindFramebuffer(gl.FRAMEBUFFER, displacementMapFramebuffer);
-        gl.uniform1i(
-          subtransformProgram.uniformLocations["u_input"],
-          iterations % 2 === 0 ? PING_TRANSFORM_UNIT : PONG_TRANSFORM_UNIT
-        );
-      } else if (i % 2 === 1) {
-        gl.bindFramebuffer(gl.FRAMEBUFFER, pongTransformFramebuffer);
-        gl.uniform1i(
-          subtransformProgram.uniformLocations["u_input"],
-          PING_TRANSFORM_UNIT
-        );
-      } else {
-        gl.bindFramebuffer(gl.FRAMEBUFFER, pingTransformFramebuffer);
-        gl.uniform1i(
-          subtransformProgram.uniformLocations["u_input"],
-          PONG_TRANSFORM_UNIT
-        );
-      }
-
-      if (i === iterations / 2) {
-        subtransformProgram = verticalSubtransformProgram;
-        gl.useProgram(verticalSubtransformProgram.program);
-      }
-
-      gl.uniform1f(
-        subtransformProgram.uniformLocations["u_subtransformSize"],
-        Math.pow(2, (i % (iterations / 2)) + 1)
-      );
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    }
-
-    gl.bindFramebuffer(gl.FRAMEBUFFER, normalMapFramebuffer);
-    gl.useProgram(normalMapProgram.program);
-    if (changed) {
-      gl.uniform1f(normalMapProgram.uniformLocations["u_size"], size);
-    }
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor.apply(gl, CLEAR_COLOR);
     gl.enable(gl.DEPTH_TEST);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    gl.enableVertexAttribArray(OCEAN_COORDINATES_UNIT);
+    const fullscreenVertexShader = buildShader(
+      gl,
+      gl.VERTEX_SHADER,
+      FULLSCREEN_VERTEX_SOURCE
+    );
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, oceanBuffer);
-    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 5 * SIZE_OF_FLOAT, 0);
+    const horizontalSubtransformProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(
+        gl,
+        gl.FRAGMENT_SHADER,
+        "#define HORIZONTAL \n" + SUBTRANSFORM_FRAGMENT_SOURCE
+      ),
+      { a_position: 0 }
+    );
+    gl.useProgram(horizontalSubtransformProgram.program);
+    gl.uniform1f(
+      horizontalSubtransformProgram.uniformLocations["u_transformSize"],
+      RESOLUTION
+    );
 
+    const verticalSubtransformProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(gl, gl.FRAGMENT_SHADER, SUBTRANSFORM_FRAGMENT_SOURCE),
+      { a_position: 0 }
+    );
+    gl.useProgram(verticalSubtransformProgram.program);
+    gl.uniform1f(
+      verticalSubtransformProgram.uniformLocations["u_transformSize"],
+      RESOLUTION
+    );
+
+    const initialSpectrumProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(gl, gl.FRAGMENT_SHADER, INITIAL_SPECTRUM_FRAGMENT_SOURCE),
+      { a_position: 0 }
+    );
+    gl.useProgram(initialSpectrumProgram.program);
+    gl.uniform1f(
+      initialSpectrumProgram.uniformLocations["u_resolution"],
+      RESOLUTION
+    );
+
+    const phaseProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(gl, gl.FRAGMENT_SHADER, PHASE_FRAGMENT_SOURCE),
+      { a_position: 0 }
+    );
+    gl.useProgram(phaseProgram.program);
+    gl.uniform1f(phaseProgram.uniformLocations["u_resolution"], RESOLUTION);
+
+    const spectrumProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(gl, gl.FRAGMENT_SHADER, SPECTRUM_FRAGMENT_SOURCE),
+      { a_position: 0 }
+    );
+    gl.useProgram(spectrumProgram.program);
+    gl.uniform1i(
+      spectrumProgram.uniformLocations["u_initialSpectrum"],
+      INITIAL_SPECTRUM_UNIT
+    );
+    gl.uniform1f(spectrumProgram.uniformLocations["u_resolution"], RESOLUTION);
+
+    const normalMapProgram = buildProgramWrapper(
+      gl,
+      fullscreenVertexShader,
+      buildShader(gl, gl.FRAGMENT_SHADER, NORMAL_MAP_FRAGMENT_SOURCE),
+      { a_position: 0 }
+    );
+    gl.useProgram(normalMapProgram.program);
+    gl.uniform1i(
+      normalMapProgram.uniformLocations["u_displacementMap"],
+      DISPLACEMENT_MAP_UNIT
+    );
+    gl.uniform1f(normalMapProgram.uniformLocations["u_resolution"], RESOLUTION);
+
+    const oceanProgram = buildProgramWrapper(
+      gl,
+      buildShader(gl, gl.VERTEX_SHADER, OCEAN_VERTEX_SOURCE),
+      buildShader(gl, gl.FRAGMENT_SHADER, OCEAN_FRAGMENT_SOURCE),
+      {
+        a_position: 0,
+        a_coordinates: OCEAN_COORDINATES_UNIT,
+      }
+    );
     gl.useProgram(oceanProgram.program);
-    if (changed) {
-      gl.uniform1f(oceanProgram.uniformLocations["u_size"], size);
-      changed = false;
-    }
-    gl.uniformMatrix4fv(
-      oceanProgram.uniformLocations["u_projectionMatrix"],
-      false,
-      projectionMatrix
+    gl.uniform1f(
+      oceanProgram.uniformLocations["u_geometrySize"],
+      GEOMETRY_SIZE
     );
-    gl.uniformMatrix4fv(
-      oceanProgram.uniformLocations["u_viewMatrix"],
-      false,
-      viewMatrix
+    gl.uniform1i(
+      oceanProgram.uniformLocations["u_displacementMap"],
+      DISPLACEMENT_MAP_UNIT
     );
-    gl.uniform3fv(
-      oceanProgram.uniformLocations["u_cameraPosition"],
-      cameraPosition
+    gl.uniform1i(oceanProgram.uniformLocations["u_normalMap"], NORMAL_MAP_UNIT);
+    gl.uniform3f(
+      oceanProgram.uniformLocations["u_oceanColor"],
+      OCEAN_COLOR[0],
+      OCEAN_COLOR[1],
+      OCEAN_COLOR[2]
     );
-    gl.drawElements(gl.TRIANGLES, oceanIndices.length, gl.UNSIGNED_SHORT, 0);
+    gl.uniform3f(
+      oceanProgram.uniformLocations["u_skyColor"],
+      SKY_COLOR[0],
+      SKY_COLOR[1],
+      SKY_COLOR[2]
+    );
+    gl.uniform3f(
+      oceanProgram.uniformLocations["u_sunDirection"],
+      SUN_DIRECTION[0],
+      SUN_DIRECTION[1],
+      SUN_DIRECTION[2]
+    );
+    gl.uniform1f(oceanProgram.uniformLocations["u_exposure"], EXPOSURE);
 
-    gl.disableVertexAttribArray(OCEAN_COORDINATES_UNIT);
-  };
-};
+    gl.enableVertexAttribArray(0);
+
+    const fullscreenVertexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, fullscreenVertexBuffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0]),
+      gl.STATIC_DRAW
+    );
+
+    const oceanData = [];
+    for (let zIndex = 0; zIndex < GEOMETRY_RESOLUTION; zIndex += 1) {
+      for (let xIndex = 0; xIndex < GEOMETRY_RESOLUTION; xIndex += 1) {
+        oceanData.push(
+          (xIndex * GEOMETRY_SIZE) / (GEOMETRY_RESOLUTION - 1) +
+            GEOMETRY_ORIGIN[0]
+        );
+        oceanData.push(0.0);
+        oceanData.push(
+          (zIndex * GEOMETRY_SIZE) / (GEOMETRY_RESOLUTION - 1) +
+            GEOMETRY_ORIGIN[1]
+        );
+        oceanData.push(xIndex / (GEOMETRY_RESOLUTION - 1));
+        oceanData.push(zIndex / (GEOMETRY_RESOLUTION - 1));
+      }
+    }
+
+    const oceanIndices = [];
+    for (let zIndex = 0; zIndex < GEOMETRY_RESOLUTION - 1; zIndex += 1) {
+      for (let xIndex = 0; xIndex < GEOMETRY_RESOLUTION - 1; xIndex += 1) {
+        let topLeft = zIndex * GEOMETRY_RESOLUTION + xIndex,
+          topRight = topLeft + 1,
+          bottomLeft = topLeft + GEOMETRY_RESOLUTION,
+          bottomRight = bottomLeft + 1;
+
+        oceanIndices.push(topLeft);
+        oceanIndices.push(bottomLeft);
+        oceanIndices.push(bottomRight);
+        oceanIndices.push(bottomRight);
+        oceanIndices.push(topRight);
+        oceanIndices.push(topLeft);
+      }
+    }
+
+    const oceanBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, oceanBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(oceanData), gl.STATIC_DRAW);
+    gl.vertexAttribPointer(
+      OCEAN_COORDINATES_UNIT,
+      2,
+      gl.FLOAT,
+      false,
+      5 * SIZE_OF_FLOAT,
+      3 * SIZE_OF_FLOAT
+    );
+
+    const oceanIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, oceanIndexBuffer);
+    gl.bufferData(
+      gl.ELEMENT_ARRAY_BUFFER,
+      new Uint16Array(oceanIndices),
+      gl.STATIC_DRAW
+    );
+
+    const initialSpectrumTexture = buildTexture(
+        gl,
+        INITIAL_SPECTRUM_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.REPEAT,
+        gl.REPEAT,
+        gl.NEAREST,
+        gl.NEAREST
+      ),
+      pongPhaseTexture = buildTexture(
+        gl,
+        PONG_PHASE_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.NEAREST,
+        gl.NEAREST
+      ),
+      spectrumTexture = buildTexture(
+        gl,
+        SPECTRUM_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.NEAREST,
+        gl.NEAREST
+      ),
+      displacementMap = buildTexture(
+        gl,
+        DISPLACEMENT_MAP_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.LINEAR,
+        gl.LINEAR
+      ),
+      normalMap = buildTexture(
+        gl,
+        NORMAL_MAP_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.LINEAR,
+        gl.LINEAR
+      ),
+      pingTransformTexture = buildTexture(
+        gl,
+        PING_TRANSFORM_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.NEAREST,
+        gl.NEAREST
+      ),
+      pongTransformTexture = buildTexture(
+        gl,
+        PONG_TRANSFORM_UNIT,
+        gl.RGBA,
+        gl.FLOAT,
+        RESOLUTION,
+        RESOLUTION,
+        null,
+        gl.CLAMP_TO_EDGE,
+        gl.CLAMP_TO_EDGE,
+        gl.NEAREST,
+        gl.NEAREST
+      );
+
+    let pingPhase = true;
+
+    const phaseArray = new Float32Array(RESOLUTION * RESOLUTION * 4);
+    for (let i = 0; i < RESOLUTION; i += 1) {
+      for (let j = 0; j < RESOLUTION; j += 1) {
+        phaseArray[i * RESOLUTION * 4 + j * 4] = Math.random() * 2.0 * Math.PI;
+        phaseArray[i * RESOLUTION * 4 + j * 4 + 1] = 0;
+        phaseArray[i * RESOLUTION * 4 + j * 4 + 2] = 0;
+        phaseArray[i * RESOLUTION * 4 + j * 4 + 3] = 0;
+      }
+    }
+    const pingPhaseTexture = buildTexture(
+      gl,
+      PING_PHASE_UNIT,
+      gl.RGBA,
+      gl.FLOAT,
+      RESOLUTION,
+      RESOLUTION,
+      phaseArray,
+      gl.CLAMP_TO_EDGE,
+      gl.CLAMP_TO_EDGE,
+      gl.NEAREST,
+      gl.NEAREST
+    );
+
+    //changing framebuffers faster than changing attachments in WebGL
+    const initialSpectrumFramebuffer = buildFramebuffer(
+        gl,
+        initialSpectrumTexture
+      ),
+      pingPhaseFramebuffer = buildFramebuffer(gl, pingPhaseTexture),
+      pongPhaseFramebuffer = buildFramebuffer(gl, pongPhaseTexture),
+      spectrumFramebuffer = buildFramebuffer(gl, spectrumTexture),
+      displacementMapFramebuffer = buildFramebuffer(gl, displacementMap),
+      normalMapFramebuffer = buildFramebuffer(gl, normalMap),
+      pingTransformFramebuffer = buildFramebuffer(gl, pingTransformTexture),
+      pongTransformFramebuffer = buildFramebuffer(gl, pongTransformTexture);
+
+    this.setWind = function (x, y) {
+      windX = x;
+      windY = y;
+      changed = true;
+    };
+
+    this.setSize = function (newSize) {
+      size = newSize;
+      changed = true;
+    };
+
+    this.setChoppiness = function (newChoppiness) {
+      choppiness = newChoppiness;
+    };
+
+    this.resize = function (width, height) {
+      canvas.width = width;
+      canvas.height = height;
+    };
+
+    this.render = function (
+      deltaTime,
+      projectionMatrix,
+      viewMatrix,
+      cameraPosition
+    ) {
+      gl.viewport(0, 0, RESOLUTION, RESOLUTION);
+      gl.disable(gl.DEPTH_TEST);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, fullscreenVertexBuffer);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+      if (changed) {
+        gl.bindFramebuffer(gl.FRAMEBUFFER, initialSpectrumFramebuffer);
+        gl.useProgram(initialSpectrumProgram.program);
+        gl.uniform2f(
+          initialSpectrumProgram.uniformLocations["u_wind"],
+          windX,
+          windY
+        );
+        gl.uniform1f(initialSpectrumProgram.uniformLocations["u_size"], size);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
+
+      //store phases separately to ensure continuity of waves during parameter editing
+      gl.useProgram(phaseProgram.program);
+      gl.bindFramebuffer(
+        gl.FRAMEBUFFER,
+        pingPhase ? pongPhaseFramebuffer : pingPhaseFramebuffer
+      );
+      gl.uniform1i(
+        phaseProgram.uniformLocations["u_phases"],
+        pingPhase ? PING_PHASE_UNIT : PONG_PHASE_UNIT
+      );
+      pingPhase = !pingPhase;
+      gl.uniform1f(phaseProgram.uniformLocations["u_deltaTime"], deltaTime);
+      gl.uniform1f(phaseProgram.uniformLocations["u_size"], size);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      gl.useProgram(spectrumProgram.program);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, spectrumFramebuffer);
+      gl.uniform1i(
+        spectrumProgram.uniformLocations["u_phases"],
+        pingPhase ? PING_PHASE_UNIT : PONG_PHASE_UNIT
+      );
+      gl.uniform1f(spectrumProgram.uniformLocations["u_size"], size);
+      gl.uniform1f(
+        spectrumProgram.uniformLocations["u_choppiness"],
+        choppiness
+      );
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      let subtransformProgram = horizontalSubtransformProgram;
+      gl.useProgram(horizontalSubtransformProgram.program);
+
+      //GPU FFT using Stockham formulation
+      let iterations = log2(RESOLUTION) * 2;
+      for (let i = 0; i < iterations; i += 1) {
+        if (i === 0) {
+          gl.bindFramebuffer(gl.FRAMEBUFFER, pingTransformFramebuffer);
+          gl.uniform1i(
+            subtransformProgram.uniformLocations["u_input"],
+            SPECTRUM_UNIT
+          );
+        } else if (i === iterations - 1) {
+          gl.bindFramebuffer(gl.FRAMEBUFFER, displacementMapFramebuffer);
+          gl.uniform1i(
+            subtransformProgram.uniformLocations["u_input"],
+            iterations % 2 === 0 ? PING_TRANSFORM_UNIT : PONG_TRANSFORM_UNIT
+          );
+        } else if (i % 2 === 1) {
+          gl.bindFramebuffer(gl.FRAMEBUFFER, pongTransformFramebuffer);
+          gl.uniform1i(
+            subtransformProgram.uniformLocations["u_input"],
+            PING_TRANSFORM_UNIT
+          );
+        } else {
+          gl.bindFramebuffer(gl.FRAMEBUFFER, pingTransformFramebuffer);
+          gl.uniform1i(
+            subtransformProgram.uniformLocations["u_input"],
+            PONG_TRANSFORM_UNIT
+          );
+        }
+
+        if (i === iterations / 2) {
+          subtransformProgram = verticalSubtransformProgram;
+          gl.useProgram(verticalSubtransformProgram.program);
+        }
+
+        gl.uniform1f(
+          subtransformProgram.uniformLocations["u_subtransformSize"],
+          Math.pow(2, (i % (iterations / 2)) + 1)
+        );
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
+
+      gl.bindFramebuffer(gl.FRAMEBUFFER, normalMapFramebuffer);
+      gl.useProgram(normalMapProgram.program);
+      if (changed) {
+        gl.uniform1f(normalMapProgram.uniformLocations["u_size"], size);
+      }
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.enable(gl.DEPTH_TEST);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+      gl.enableVertexAttribArray(OCEAN_COORDINATES_UNIT);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, oceanBuffer);
+      gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 5 * SIZE_OF_FLOAT, 0);
+
+      gl.useProgram(oceanProgram.program);
+      if (changed) {
+        gl.uniform1f(oceanProgram.uniformLocations["u_size"], size);
+        changed = false;
+      }
+      gl.uniformMatrix4fv(
+        oceanProgram.uniformLocations["u_projectionMatrix"],
+        false,
+        projectionMatrix
+      );
+      gl.uniformMatrix4fv(
+        oceanProgram.uniformLocations["u_viewMatrix"],
+        false,
+        viewMatrix
+      );
+      gl.uniform3fv(
+        oceanProgram.uniformLocations["u_cameraPosition"],
+        cameraPosition
+      );
+      gl.drawElements(gl.TRIANGLES, oceanIndices.length, gl.UNSIGNED_SHORT, 0);
+
+      gl.disableVertexAttribArray(OCEAN_COORDINATES_UNIT);
+    };
+  }
+}
 
 // ui.js
 //waves in simulation are not actually Gerstner waves but Gerstner waves are used for visualisation purposes
-var Profile = function (canvas) {
-  var context = canvas.getContext("2d");
-  var width = canvas.width;
-  var height = canvas.height;
+class Profile {
+  constructor(canvas) {
+    const context = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
 
-  context.strokeStyle = PROFILE_COLOR;
-  context.lineWidth = PROFILE_LINE_WIDTH;
+    context.strokeStyle = PROFILE_COLOR;
+    context.lineWidth = PROFILE_LINE_WIDTH;
 
-  var evaluateX = function (x, choppiness) {
-    return (
-      x -
-      choppiness *
-        CHOPPINESS_SCALE *
-        PROFILE_AMPLITUDE *
-        Math.sin(x * PROFILE_OMEGA + PROFILE_PHI)
-    );
-  };
+    const evaluateX = function (x, choppiness) {
+      return (
+        x -
+        choppiness *
+          CHOPPINESS_SCALE *
+          PROFILE_AMPLITUDE *
+          Math.sin(x * PROFILE_OMEGA + PROFILE_PHI)
+      );
+    };
 
-  var evaluateY = function (x) {
-    return (
-      PROFILE_AMPLITUDE * Math.cos(x * PROFILE_OMEGA + PROFILE_PHI) +
-      PROFILE_OFFSET
-    );
-  };
+    const evaluateY = function (x) {
+      return (
+        PROFILE_AMPLITUDE * Math.cos(x * PROFILE_OMEGA + PROFILE_PHI) +
+        PROFILE_OFFSET
+      );
+    };
 
-  this.render = function (choppiness) {
-    context.clearRect(0, 0, width, height);
-    context.beginPath();
-    context.moveTo(evaluateX(0, choppiness), evaluateY(0));
-    for (var x = 0; x <= width; x += PROFILE_STEP) {
-      context.lineTo(evaluateX(x, choppiness), evaluateY(x));
-    }
-    context.stroke();
-  };
-  this.render(INITIAL_CHOPPINESS);
-};
+    this.render = function (choppiness) {
+      context.clearRect(0, 0, width, height);
+      context.beginPath();
+      context.moveTo(evaluateX(0, choppiness), evaluateY(0));
+      for (let x = 0; x <= width; x += PROFILE_STEP) {
+        context.lineTo(evaluateX(x, choppiness), evaluateY(x));
+      }
+      context.stroke();
+    };
+    this.render(INITIAL_CHOPPINESS);
+  }
+}
 
-var Arrow = function (parent, valueX, valueY) {
-  var arrow = [valueX * WIND_SCALE, 0.0, valueY * WIND_SCALE];
-  var tip = addToVector([], ARROW_ORIGIN, arrow);
+class Arrow {
+  constructor(parent, valueX, valueY) {
+    const arrow = [valueX * WIND_SCALE, 0.0, valueY * WIND_SCALE];
+    const tip = addToVector([], ARROW_ORIGIN, arrow);
 
-  var shaftDiv = document.createElement("div");
-  shaftDiv.style.position = "absolute";
-  shaftDiv.style.width = ARROW_SHAFT_WIDTH + "px";
-  shaftDiv.style.background = UI_COLOR;
-  setTransformOrigin(shaftDiv, "center top");
-  setTransform(
-    shaftDiv,
-    "translate3d(" +
-      (ARROW_ORIGIN[0] - ARROW_SHAFT_WIDTH / 2) +
-      "px, " +
-      ARROW_ORIGIN[1] +
-      "px, " +
-      ARROW_ORIGIN[2] +
-      "px) rotateX(90deg)"
-  );
-  parent.appendChild(shaftDiv);
-
-  var headDiv = document.createElement("div");
-  headDiv.style.position = "absolute";
-  headDiv.style.borderStyle = "solid";
-  headDiv.style.borderColor = UI_COLOR + " transparent transparent transparent";
-  headDiv.style.borderWidth =
-    ARROW_HEAD_HEIGHT +
-    "px " +
-    ARROW_HEAD_WIDTH / 2 +
-    "px 0px " +
-    ARROW_HEAD_WIDTH / 2 +
-    "px";
-  setTransformOrigin(headDiv, "center top");
-  setTransform(
-    headDiv,
-    "translate3d(" +
-      (ARROW_ORIGIN[0] - ARROW_HEAD_WIDTH / 2) +
-      "px, " +
-      ARROW_ORIGIN[1] +
-      "px, " +
-      ARROW_ORIGIN[2] +
-      "px) rotateX(90deg)"
-  );
-  parent.appendChild(headDiv);
-
-  var render = function () {
-    var angle = Math.atan2(arrow[2], arrow[0]);
-
-    var arrowLength = lengthOfVector(arrow);
-
-    shaftDiv.style.height =
-      arrowLength - ARROW_HEAD_HEIGHT + 1 + ARROW_OFFSET + "px";
+    const shaftDiv = document.createElement("div");
+    shaftDiv.style.position = "absolute";
+    shaftDiv.style.width = ARROW_SHAFT_WIDTH + "px";
+    shaftDiv.style.background = UI_COLOR;
+    setTransformOrigin(shaftDiv, "center top");
     setTransform(
       shaftDiv,
       "translate3d(" +
@@ -1594,12 +1567,23 @@ var Arrow = function (parent, valueX, valueY) {
         ARROW_ORIGIN[1] +
         "px, " +
         ARROW_ORIGIN[2] +
-        "px) rotateX(90deg) rotateZ(" +
-        (angle - Math.PI / 2) +
-        "rad) translateY(" +
-        -ARROW_OFFSET +
-        "px)"
+        "px) rotateX(90deg)"
     );
+    parent.appendChild(shaftDiv);
+
+    const headDiv = document.createElement("div");
+    headDiv.style.position = "absolute";
+    headDiv.style.borderStyle = "solid";
+    headDiv.style.borderColor =
+      UI_COLOR + " transparent transparent transparent";
+    headDiv.style.borderWidth =
+      ARROW_HEAD_HEIGHT +
+      "px " +
+      ARROW_HEAD_WIDTH / 2 +
+      "px 0px " +
+      ARROW_HEAD_WIDTH / 2 +
+      "px";
+    setTransformOrigin(headDiv, "center top");
     setTransform(
       headDiv,
       "translate3d(" +
@@ -1608,163 +1592,199 @@ var Arrow = function (parent, valueX, valueY) {
         ARROW_ORIGIN[1] +
         "px, " +
         ARROW_ORIGIN[2] +
-        "px) rotateX(90deg) rotateZ(" +
-        (angle - Math.PI / 2) +
-        "rad) translateY(" +
-        (arrowLength - ARROW_HEAD_HEIGHT - 1) +
-        "px)"
-    );
-  };
-
-  this.update = function (mouseX, mouseZ) {
-    arrow = [mouseX, 0, mouseZ];
-    subtractFromVector(arrow, arrow, ARROW_ORIGIN);
-
-    var arrowLength = lengthOfVector(arrow);
-    if (arrowLength > MAX_WIND_SPEED * WIND_SCALE) {
-      multiplyVectorByScalar(
-        arrow,
-        arrow,
-        (MAX_WIND_SPEED * WIND_SCALE) / arrowLength
-      );
-    } else if (lengthOfVector(arrow) < MIN_WIND_SPEED * WIND_SCALE) {
-      multiplyVectorByScalar(
-        arrow,
-        arrow,
-        (MIN_WIND_SPEED * WIND_SCALE) / arrowLength
-      );
-    }
-
-    addToVector(tip, ARROW_ORIGIN, arrow);
-
-    render();
-
-    valueX = arrow[0] / WIND_SCALE;
-    valueY = arrow[2] / WIND_SCALE;
-  };
-
-  this.getValue = function () {
-    return lengthOfVector(arrow) / WIND_SCALE;
-  };
-
-  this.getValueX = function () {
-    return valueX;
-  };
-
-  this.getValueY = function () {
-    return valueY;
-  };
-
-  this.distanceToTip = function (vector) {
-    return distanceBetweenVectors(tip, vector);
-  };
-
-  this.getTipZ = function () {
-    return tip[2];
-  };
-
-  render();
-};
-
-var Slider = function (
-  parent,
-  x,
-  z,
-  length,
-  minValue,
-  maxValue,
-  value,
-  sliderBreadth,
-  handleSize
-) {
-  var sliderLeftDiv = document.createElement("div");
-  sliderLeftDiv.style.position = "absolute";
-  sliderLeftDiv.style.width = length + "px";
-  sliderLeftDiv.style.height = sliderBreadth + "px";
-  sliderLeftDiv.style.backgroundColor = SLIDER_LEFT_COLOR;
-  setTransformOrigin(sliderLeftDiv, "center top");
-  setTransform(
-    sliderLeftDiv,
-    "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
-  );
-  parent.appendChild(sliderLeftDiv);
-
-  var sliderRightDiv = document.createElement("div");
-  sliderRightDiv.style.position = "absolute";
-  sliderRightDiv.style.width = length + "px";
-  sliderRightDiv.style.height = sliderBreadth + "px";
-  sliderRightDiv.style.backgroundColor = SLIDER_RIGHT_COLOR;
-  setTransformOrigin(sliderRightDiv, "center top");
-  setTransform(
-    sliderRightDiv,
-    "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
-  );
-  parent.appendChild(sliderRightDiv);
-
-  var handleDiv = document.createElement("div");
-  handleDiv.style.position = "absolute";
-  handleDiv.style.width = handleSize + "px";
-  handleDiv.style.height = handleSize + "px";
-  handleDiv.style.borderRadius = handleSize * 0.5 + "px";
-  handleDiv.style.background = HANDLE_COLOR;
-  setTransformOrigin(handleDiv, "center top");
-  setTransform(
-    handleDiv,
-    "translate3d(" + x + "px, 0px, " + z + "px) rotateX(90deg)"
-  );
-  parent.appendChild(handleDiv);
-
-  var handleX =
-    x +
-    ((value - minValue) / (maxValue - minValue)) * length -
-    handleDiv.offsetWidth / 2;
-
-  var render = function () {
-    var fraction = (value - minValue) / (maxValue - minValue);
-
-    setTransform(
-      handleDiv,
-      "translate3d(" +
-        (handleX - handleDiv.offsetWidth * 0.5) +
-        "px, 0, " +
-        (z - handleDiv.offsetHeight * 0.5) +
         "px) rotateX(90deg)"
     );
-    sliderLeftDiv.style.width = fraction * length + "px";
-    sliderRightDiv.style.width = (1.0 - fraction) * length + "px";
+    parent.appendChild(headDiv);
+
+    const render = function () {
+      const angle = Math.atan2(arrow[2], arrow[0]);
+
+      const arrowLength = lengthOfVector(arrow);
+
+      shaftDiv.style.height =
+        arrowLength - ARROW_HEAD_HEIGHT + 1 + ARROW_OFFSET + "px";
+      setTransform(
+        shaftDiv,
+        "translate3d(" +
+          (ARROW_ORIGIN[0] - ARROW_SHAFT_WIDTH / 2) +
+          "px, " +
+          ARROW_ORIGIN[1] +
+          "px, " +
+          ARROW_ORIGIN[2] +
+          "px) rotateX(90deg) rotateZ(" +
+          (angle - Math.PI / 2) +
+          "rad) translateY(" +
+          -ARROW_OFFSET +
+          "px)"
+      );
+      setTransform(
+        headDiv,
+        "translate3d(" +
+          (ARROW_ORIGIN[0] - ARROW_HEAD_WIDTH / 2) +
+          "px, " +
+          ARROW_ORIGIN[1] +
+          "px, " +
+          ARROW_ORIGIN[2] +
+          "px) rotateX(90deg) rotateZ(" +
+          (angle - Math.PI / 2) +
+          "rad) translateY(" +
+          (arrowLength - ARROW_HEAD_HEIGHT - 1) +
+          "px)"
+      );
+    };
+
+    this.update = function (mouseX, mouseZ) {
+      arrow = [mouseX, 0, mouseZ];
+      subtractFromVector(arrow, arrow, ARROW_ORIGIN);
+
+      const arrowLength = lengthOfVector(arrow);
+      if (arrowLength > MAX_WIND_SPEED * WIND_SCALE) {
+        multiplyVectorByScalar(
+          arrow,
+          arrow,
+          (MAX_WIND_SPEED * WIND_SCALE) / arrowLength
+        );
+      } else if (lengthOfVector(arrow) < MIN_WIND_SPEED * WIND_SCALE) {
+        multiplyVectorByScalar(
+          arrow,
+          arrow,
+          (MIN_WIND_SPEED * WIND_SCALE) / arrowLength
+        );
+      }
+
+      addToVector(tip, ARROW_ORIGIN, arrow);
+
+      render();
+
+      valueX = arrow[0] / WIND_SCALE;
+      valueY = arrow[2] / WIND_SCALE;
+    };
+
+    this.getValue = function () {
+      return lengthOfVector(arrow) / WIND_SCALE;
+    };
+
+    this.getValueX = function () {
+      return valueX;
+    };
+
+    this.getValueY = function () {
+      return valueY;
+    };
+
+    this.distanceToTip = function (vector) {
+      return distanceBetweenVectors(tip, vector);
+    };
+
+    this.getTipZ = function () {
+      return tip[2];
+    };
+
+    render();
+  }
+}
+
+class Slider {
+  constructor(
+    parent,
+    x,
+    z,
+    length,
+    minValue,
+    maxValue,
+    value,
+    sliderBreadth,
+    handleSize
+  ) {
+    const sliderLeftDiv = document.createElement("div");
+    sliderLeftDiv.style.position = "absolute";
+    sliderLeftDiv.style.width = length + "px";
+    sliderLeftDiv.style.height = sliderBreadth + "px";
+    sliderLeftDiv.style.backgroundColor = SLIDER_LEFT_COLOR;
+    setTransformOrigin(sliderLeftDiv, "center top");
+    setTransform(
+      sliderLeftDiv,
+      "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
+    );
+    parent.appendChild(sliderLeftDiv);
+
+    const sliderRightDiv = document.createElement("div");
+    sliderRightDiv.style.position = "absolute";
+    sliderRightDiv.style.width = length + "px";
+    sliderRightDiv.style.height = sliderBreadth + "px";
+    sliderRightDiv.style.backgroundColor = SLIDER_RIGHT_COLOR;
+    setTransformOrigin(sliderRightDiv, "center top");
     setTransform(
       sliderRightDiv,
-      "translate3d(" +
-        (x + fraction * length) +
-        "px, 0, " +
-        z +
-        "px) rotateX(90deg)"
+      "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
     );
-  };
+    parent.appendChild(sliderRightDiv);
 
-  this.update = function (mouseX, callback) {
-    handleX = clamp(mouseX, x, x + length);
-    var fraction = clamp((mouseX - x) / length, 0.0, 1.0);
-    value = minValue + fraction * (maxValue - minValue);
+    const handleDiv = document.createElement("div");
+    handleDiv.style.position = "absolute";
+    handleDiv.style.width = handleSize + "px";
+    handleDiv.style.height = handleSize + "px";
+    handleDiv.style.borderRadius = handleSize * 0.5 + "px";
+    handleDiv.style.background = HANDLE_COLOR;
+    setTransformOrigin(handleDiv, "center top");
+    setTransform(
+      handleDiv,
+      "translate3d(" + x + "px, 0px, " + z + "px) rotateX(90deg)"
+    );
+    parent.appendChild(handleDiv);
 
-    callback(value);
+    const handleX =
+      x +
+      ((value - minValue) / (maxValue - minValue)) * length -
+      handleDiv.offsetWidth / 2;
+
+    const render = function () {
+      const fraction = (value - minValue) / (maxValue - minValue);
+
+      setTransform(
+        handleDiv,
+        "translate3d(" +
+          (handleX - handleDiv.offsetWidth * 0.5) +
+          "px, 0, " +
+          (z - handleDiv.offsetHeight * 0.5) +
+          "px) rotateX(90deg)"
+      );
+      sliderLeftDiv.style.width = fraction * length + "px";
+      sliderRightDiv.style.width = (1.0 - fraction) * length + "px";
+      setTransform(
+        sliderRightDiv,
+        "translate3d(" +
+          (x + fraction * length) +
+          "px, 0, " +
+          z +
+          "px) rotateX(90deg)"
+      );
+    };
+
+    this.update = function (mouseX, callback) {
+      handleX = clamp(mouseX, x, x + length);
+      const fraction = clamp((mouseX - x) / length, 0.0, 1.0);
+      value = minValue + fraction * (maxValue - minValue);
+
+      callback(value);
+
+      render();
+    };
+
+    this.getValue = function () {
+      return value;
+    };
+
+    this.distanceToHandle = function (vector) {
+      return distanceBetweenVectors([handleX, 0, z], vector);
+    };
 
     render();
-  };
-
-  this.getValue = function () {
-    return value;
-  };
-
-  this.distanceToHandle = function (vector) {
-    return distanceBetweenVectors([handleX, 0, z], vector);
-  };
-
-  render();
-};
+  }
+}
 // waves.js
-var main = function () {
-  var simulatorCanvas = document.getElementById(SIMULATOR_CANVAS_ID),
+const main = function () {
+  const simulatorCanvas = document.getElementById(SIMULATOR_CANVAS_ID),
     overlayDiv = document.getElementById(OVERLAY_DIV_ID),
     uiDiv = document.getElementById(UI_DIV_ID),
     cameraDiv = document.getElementById(CAMERA_DIV_ID),
@@ -1776,7 +1796,7 @@ var main = function () {
   setText(choppinessDiv, INITIAL_CHOPPINESS, CHOPPINESS_DECIMAL_PLACES);
   setText(sizeSpan, INITIAL_SIZE, SIZE_DECIMAL_PLACES);
 
-  var camera = new Camera(),
+  const camera = new Camera(),
     projectionMatrix = makePerspectiveMatrix(
       new Float32Array(16),
       FOV,
@@ -1785,13 +1805,13 @@ var main = function () {
       FAR
     );
 
-  var simulator = new Simulator(
+  const simulator = new Simulator(
     simulatorCanvas,
     window.innerWidth,
     window.innerHeight
   );
 
-  var profile = new Profile(document.getElementById(PROFILE_CANVAS_ID)),
+  const profile = new Profile(document.getElementById(PROFILE_CANVAS_ID)),
     sizeSlider = new Slider(
       cameraDiv,
       SIZE_SLIDER_X,
@@ -1815,19 +1835,19 @@ var main = function () {
       CHOPPINESS_HANDLE_SIZE
     );
 
-  var width = window.innerWidth,
+  let width = window.innerWidth,
     height = window.innerHeight;
 
-  var lastMouseX = 0;
-  var lastMouseY = 0;
-  var mode = NONE;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  let mode = NONE;
 
-  var setUIPerspective = function (height) {
-    var fovValue = (0.5 / Math.tan(FOV / 2)) * height;
+  const setUIPerspective = function (height) {
+    const fovValue = (0.5 / Math.tan(FOV / 2)) * height;
     setPerspective(uiDiv, fovValue + "px");
   };
 
-  var windArrow = new Arrow(cameraDiv, INITIAL_WIND[0], INITIAL_WIND[1]);
+  const windArrow = new Arrow(cameraDiv, INITIAL_WIND[0], INITIAL_WIND[1]);
   setText(windSpeedSpan, windArrow.getValue(), WIND_SPEED_DECIMAL_PLACES);
   setTransform(
     windDiv,
@@ -1838,10 +1858,10 @@ var main = function () {
       "px) rotateX(90deg)"
   );
 
-  var inverseProjectionViewMatrix = [],
+  const inverseProjectionViewMatrix = [],
     nearPoint = [],
     farPoint = [];
-  var unproject = function (viewMatrix, x, y, width, height) {
+  const unproject = function (viewMatrix, x, y, width, height) {
     premultiplyMatrix(
       inverseProjectionViewMatrix,
       viewMatrix,
@@ -1870,8 +1890,8 @@ var main = function () {
     projectVector4(nearPoint, nearPoint);
     projectVector4(farPoint, farPoint);
 
-    var t = -nearPoint[1] / (farPoint[1] - nearPoint[1]);
-    var point = [
+    const t = -nearPoint[1] / (farPoint[1] - nearPoint[1]);
+    const point = [
       nearPoint[0] + t * (farPoint[0] - nearPoint[0]),
       nearPoint[1] + t * (farPoint[1] - nearPoint[1]),
       nearPoint[2] + t * (farPoint[2] - nearPoint[2]),
@@ -1880,14 +1900,14 @@ var main = function () {
     return point;
   };
 
-  var onMouseDown = function (event) {
+  const onMouseDown = function (event) {
     event.preventDefault();
 
-    var mousePosition = getMousePosition(event, uiDiv);
-    var mouseX = mousePosition.x,
+    const mousePosition = getMousePosition(event, uiDiv);
+    const mouseX = mousePosition.x,
       mouseY = mousePosition.y;
 
-    var point = unproject(
+    const point = unproject(
       camera.getViewMatrix(),
       mouseX,
       mouseY,
@@ -1914,11 +1934,11 @@ var main = function () {
   overlayDiv.addEventListener("mousemove", function (event) {
     event.preventDefault();
 
-    var mousePosition = getMousePosition(event, uiDiv),
+    const mousePosition = getMousePosition(event, uiDiv),
       mouseX = mousePosition.x,
       mouseY = mousePosition.y;
 
-    var point = unproject(
+    const point = unproject(
       camera.getViewMatrix(),
       mouseX,
       mouseY,
@@ -1986,14 +2006,14 @@ var main = function () {
   });
 
   window.addEventListener("mouseout", function (event) {
-    var from = event.relatedTarget || event.toElement;
+    const from = event.relatedTarget || event.toElement;
     if (!from || from.nodeName === "HTML") {
       mode = NONE;
     }
   });
 
-  var onresize = function () {
-    var windowWidth = window.innerWidth,
+  const onresize = function () {
+    const windowWidth = window.innerWidth,
       windowHeight = window.innerHeight;
 
     overlayDiv.style.width = windowWidth + "px";
@@ -2018,7 +2038,7 @@ var main = function () {
       width = windowWidth;
       height = windowHeight;
     } else {
-      var newHeight = windowWidth / MIN_ASPECT;
+      const newHeight = windowWidth / MIN_ASPECT;
       makePerspectiveMatrix(
         projectionMatrix,
         FOV,
@@ -2042,12 +2062,12 @@ var main = function () {
   window.addEventListener("resize", onresize);
   onresize();
 
-  var lastTime = new Date().getTime();
-  var render = function render(currentTime) {
-    var deltaTime = (currentTime - lastTime) / 1000 || 0.0;
+  let lastTime = new Date().getTime();
+  const render = function render(currentTime) {
+    const deltaTime = (currentTime - lastTime) / 1000 || 0.0;
     lastTime = currentTime;
 
-    var fovValue = (0.5 / Math.tan(FOV / 2)) * height;
+    const fovValue = (0.5 / Math.tan(FOV / 2)) * height;
     setTransform(
       cameraDiv,
       "translate3d(0px, 0px, " +
