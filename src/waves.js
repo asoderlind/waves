@@ -29,9 +29,6 @@ import {
   PROFILE_COLOR,
   PROFILE_LINE_WIDTH,
   CHOPPINESS_SCALE,
-  HANDLE_COLOR,
-  SLIDER_LEFT_COLOR,
-  SLIDER_RIGHT_COLOR,
   FOV,
   NEAR,
   FAR,
@@ -84,7 +81,6 @@ import {
   makeIdentityMatrix,
   makeXRotationMatrix,
   makeYRotationMatrix,
-  distanceBetweenVectors,
   setVector4,
   projectVector4,
   transformVectorByMatrix,
@@ -99,7 +95,6 @@ import {
   buildFramebuffer,
   toCSSMatrix,
   setPerspective,
-  setTransformOrigin,
   setTransform,
   setText,
   getMousePosition,
@@ -108,74 +103,10 @@ import {
 } from "./shared.js";
 
 import Arrow from "./Arrow.js";
+import Slider from "./Slider.js";
+import Camera from "./Camera.js";
 
 // simulation.js
-class Camera {
-  constructor() {
-    let azimuth = INITIAL_AZIMUTH,
-      elevation = INITIAL_ELEVATION,
-      viewMatrix = makeIdentityMatrix(new Float32Array(16)),
-      position = new Float32Array(3),
-      changed = true;
-
-    this.changeAzimuth = function (deltaAzimuth) {
-      azimuth += deltaAzimuth;
-      azimuth = clamp(azimuth, MIN_AZIMUTH, MAX_AZIMUTH);
-      changed = true;
-    };
-
-    this.changeElevation = function (deltaElevation) {
-      elevation += deltaElevation;
-      elevation = clamp(elevation, MIN_ELEVATION, MAX_ELEVATION);
-      changed = true;
-    };
-
-    this.getPosition = function () {
-      return position;
-    };
-
-    let orbitTranslationMatrix = makeIdentityMatrix(new Float32Array(16)),
-      xRotationMatrix = new Float32Array(16),
-      yRotationMatrix = new Float32Array(16),
-      distanceTranslationMatrix = makeIdentityMatrix(new Float32Array(16));
-
-    this.getViewMatrix = function () {
-      if (changed) {
-        makeIdentityMatrix(viewMatrix);
-
-        makeXRotationMatrix(xRotationMatrix, elevation);
-        makeYRotationMatrix(yRotationMatrix, azimuth);
-        distanceTranslationMatrix[14] = -CAMERA_DISTANCE;
-        orbitTranslationMatrix[12] = -ORBIT_POINT[0];
-        orbitTranslationMatrix[13] = -ORBIT_POINT[1];
-        orbitTranslationMatrix[14] = -ORBIT_POINT[2];
-
-        premultiplyMatrix(viewMatrix, viewMatrix, orbitTranslationMatrix);
-        premultiplyMatrix(viewMatrix, viewMatrix, yRotationMatrix);
-        premultiplyMatrix(viewMatrix, viewMatrix, xRotationMatrix);
-        premultiplyMatrix(viewMatrix, viewMatrix, distanceTranslationMatrix);
-
-        position[0] =
-          CAMERA_DISTANCE *
-            Math.sin(Math.PI / 2 - elevation) *
-            Math.sin(-azimuth) +
-          ORBIT_POINT[0];
-        position[1] =
-          CAMERA_DISTANCE * Math.cos(Math.PI / 2 - elevation) + ORBIT_POINT[1];
-        position[2] =
-          CAMERA_DISTANCE *
-            Math.sin(Math.PI / 2 - elevation) *
-            Math.cos(-azimuth) +
-          ORBIT_POINT[2];
-
-        changed = false;
-      }
-
-      return viewMatrix;
-    };
-  }
-}
-
 const FULLSCREEN_VERTEX_SOURCE = [
   "attribute vec2 a_position;",
   "varying vec2 v_coordinates;",
@@ -1027,104 +958,6 @@ class Profile {
   }
 }
 
-class Slider {
-  constructor(
-    parent,
-    x,
-    z,
-    length,
-    minValue,
-    maxValue,
-    value,
-    sliderBreadth,
-    handleSize
-  ) {
-    const sliderLeftDiv = document.createElement("div");
-    sliderLeftDiv.style.position = "absolute";
-    sliderLeftDiv.style.width = length + "px";
-    sliderLeftDiv.style.height = sliderBreadth + "px";
-    sliderLeftDiv.style.backgroundColor = SLIDER_LEFT_COLOR;
-    setTransformOrigin(sliderLeftDiv, "center top");
-    setTransform(
-      sliderLeftDiv,
-      "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
-    );
-    parent.appendChild(sliderLeftDiv);
-
-    const sliderRightDiv = document.createElement("div");
-    sliderRightDiv.style.position = "absolute";
-    sliderRightDiv.style.width = length + "px";
-    sliderRightDiv.style.height = sliderBreadth + "px";
-    sliderRightDiv.style.backgroundColor = SLIDER_RIGHT_COLOR;
-    setTransformOrigin(sliderRightDiv, "center top");
-    setTransform(
-      sliderRightDiv,
-      "translate3d(" + x + "px, 0, " + z + "px) rotateX(90deg)"
-    );
-    parent.appendChild(sliderRightDiv);
-
-    const handleDiv = document.createElement("div");
-    handleDiv.style.position = "absolute";
-    handleDiv.style.width = handleSize + "px";
-    handleDiv.style.height = handleSize + "px";
-    handleDiv.style.borderRadius = handleSize * 0.5 + "px";
-    handleDiv.style.background = HANDLE_COLOR;
-    setTransformOrigin(handleDiv, "center top");
-    setTransform(
-      handleDiv,
-      "translate3d(" + x + "px, 0px, " + z + "px) rotateX(90deg)"
-    );
-    parent.appendChild(handleDiv);
-
-    const handleX =
-      x +
-      ((value - minValue) / (maxValue - minValue)) * length -
-      handleDiv.offsetWidth / 2;
-
-    const render = function () {
-      const fraction = (value - minValue) / (maxValue - minValue);
-
-      setTransform(
-        handleDiv,
-        "translate3d(" +
-          (handleX - handleDiv.offsetWidth * 0.5) +
-          "px, 0, " +
-          (z - handleDiv.offsetHeight * 0.5) +
-          "px) rotateX(90deg)"
-      );
-      sliderLeftDiv.style.width = fraction * length + "px";
-      sliderRightDiv.style.width = (1.0 - fraction) * length + "px";
-      setTransform(
-        sliderRightDiv,
-        "translate3d(" +
-          (x + fraction * length) +
-          "px, 0, " +
-          z +
-          "px) rotateX(90deg)"
-      );
-    };
-
-    this.update = function (mouseX, callback) {
-      handleX = clamp(mouseX, x, x + length);
-      const fraction = clamp((mouseX - x) / length, 0.0, 1.0);
-      value = minValue + fraction * (maxValue - minValue);
-
-      callback(value);
-
-      render();
-    };
-
-    this.getValue = function () {
-      return value;
-    };
-
-    this.distanceToHandle = function (vector) {
-      return distanceBetweenVectors([handleX, 0, z], vector);
-    };
-
-    render();
-  }
-}
 // waves.js
 const main = function () {
   const simulatorCanvas = document.getElementById(SIMULATOR_CANVAS_ID),
