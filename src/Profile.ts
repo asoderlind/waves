@@ -8,7 +8,7 @@ import {
   PROFILE_COLOR,
   PROFILE_LINE_WIDTH,
   CHOPPINESS_SCALE,
-} from "./shared";
+} from "./constants";
 
 class Profile {
   private context: CanvasRenderingContext2D;

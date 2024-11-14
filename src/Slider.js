@@ -2,6 +2,9 @@ import {
   HANDLE_COLOR,
   SLIDER_LEFT_COLOR,
   SLIDER_RIGHT_COLOR,
+} from "./constants";
+
+import {
   distanceBetweenVectors,
   clamp,
   setTransformOrigin,

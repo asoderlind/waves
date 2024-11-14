@@ -43,6 +43,9 @@ import {
   ROTATING,
   SLIDING_SIZE,
   SLIDING_CHOPPINESS,
+} from "./constants";
+
+import {
   setVector4,
   projectVector4,
   transformVectorByMatrix,
@@ -56,13 +59,13 @@ import {
   getMousePosition,
   hasWebGLSupportWithExtensions,
   requestAnimationFrame,
-} from "./shared.js";
+} from "./shared";
 
-import Arrow from "./Arrow.js";
-import Slider from "./Slider.js";
-import Camera from "./Camera.js";
-import Simulator from "./Simulator.js";
-import Profile from "./Profile.ts";
+import Arrow from "./Arrow";
+import Slider from "./Slider";
+import Camera from "./Camera";
+import Simulator from "./Simulator";
+import Profile from "./Profile";
 
 const main = function () {
   const simulatorCanvas = document.getElementById(SIMULATOR_CANVAS_ID),

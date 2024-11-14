@@ -7,6 +7,9 @@ import {
   MAX_AZIMUTH,
   MIN_ELEVATION,
   MAX_ELEVATION,
+} from "./constants";
+
+import {
   makeIdentityMatrix,
   makeXRotationMatrix,
   makeYRotationMatrix,

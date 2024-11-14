@@ -21,6 +21,9 @@ import {
   PONG_PHASE_UNIT,
   PING_TRANSFORM_UNIT,
   PONG_TRANSFORM_UNIT,
+} from "./constants";
+
+import {
   log2,
   buildProgramWrapper,
   buildShader,

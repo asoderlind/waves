@@ -8,6 +8,9 @@ import {
   WIND_SCALE,
   MIN_WIND_SPEED,
   MAX_WIND_SPEED,
+} from "./constants.ts";
+
+import {
   addToVector,
   subtractFromVector,
   multiplyVectorByScalar,
