@@ -4,12 +4,9 @@ import {
   SLIDER_RIGHT_COLOR,
 } from "./constants";
 
-import {
-  distanceBetweenVectors,
-  clamp,
-  setTransformOrigin,
-  setTransform,
-} from "./shared.js";
+import { distanceBetweenVectors, clamp } from "./mathUtils";
+
+import { setTransformOrigin, setTransform } from "./shared.js";
 
 class Slider {
   constructor(

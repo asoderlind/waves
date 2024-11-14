@@ -52,6 +52,9 @@ import {
   invertMatrix,
   premultiplyMatrix,
   makePerspectiveMatrix,
+} from "./mathUtils";
+
+import {
   toCSSMatrix,
   setPerspective,
   setTransform,
