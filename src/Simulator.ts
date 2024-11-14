@@ -31,15 +31,16 @@ import {
   buildFramebuffer,
 } from "./shared";
 
+import FULLSCREEN_VERTEX_SOURCE from "./shaders/fullscreen.vert.glsl";
+import SUBTRANSFORM_FRAGMENT_SOURCE from "./shaders/subtransform.frag.glsl";
+import INITIAL_SPECTRUM_FRAGMENT_SOURCE from "./shaders/initialSpectrum.frag.glsl";
+import PHASE_FRAGMENT_SOURCE from "./shaders/phase.frag.glsl";
+
 import {
   OCEAN_FRAGMENT_SOURCE,
   OCEAN_VERTEX_SOURCE,
   NORMAL_MAP_FRAGMENT_SOURCE,
   SPECTRUM_FRAGMENT_SOURCE,
-  PHASE_FRAGMENT_SOURCE,
-  INITIAL_SPECTRUM_FRAGMENT_SOURCE,
-  SUBTRANSFORM_FRAGMENT_SOURCE,
-  FULLSCREEN_VERTEX_SOURCE,
 } from "./Shaders";
 
 type Vector3 = [number, number, number];

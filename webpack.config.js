@@ -15,6 +15,11 @@ module.exports = {
         use: "ts-loader", // Transpile TypeScript files
       },
       {
+        test: /\.glsl$/,
+        use: "raw-loader",
+      },
+
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
