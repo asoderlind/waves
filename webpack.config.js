@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/main.js", // Entry file for JavaScript
+  entry: "./src/main.ts", // Entry file for JavaScript
   output: {
     path: path.resolve(__dirname, "dist"), // Output directory
     filename: "bundle.js", // Output JavaScript file

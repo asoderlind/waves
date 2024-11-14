@@ -1,5 +1,5 @@
 export const INITIAL_SIZE = 250,
-  INITIAL_WIND = [10.0, 10.0],
+  INITIAL_WIND = [5.0, 10.0],
   INITIAL_CHOPPINESS = 1.5;
 
 export const CLEAR_COLOR = [1.0, 1.0, 1.0, 0.0],
