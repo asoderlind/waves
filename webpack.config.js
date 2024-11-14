@@ -10,6 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/, // Add support for .ts and .tsx files
+        exclude: /node_modules/,
+        use: "ts-loader", // Transpile TypeScript files
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -32,7 +37,7 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: [".js"],
+    extensions: [".js", ".ts"], // Resolve both .js and .ts extensions
   },
   devServer: {
     static: path.resolve(__dirname, "dist"),
