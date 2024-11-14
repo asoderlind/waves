@@ -24,7 +24,6 @@ import {
 } from "./constants";
 
 import { log2 } from "./mathUtils";
-
 import {
   buildProgramWrapper,
   buildShader,
@@ -42,28 +41,55 @@ import {
   SUBTRANSFORM_FRAGMENT_SOURCE,
   FULLSCREEN_VERTEX_SOURCE,
 } from "./Shaders";
+
+type Vector3 = [number, number, number];
+type Matrix4 = Float32Array;
+
 class Simulator {
-  constructor(canvas, width, height) {
-    var canvas = canvas;
-    canvas.width = width;
-    canvas.height = height;
+  private canvas: HTMLCanvasElement;
+  private gl: WebGLRenderingContext;
+  private windX: number = INITIAL_WIND[0];
+  private windY: number = INITIAL_WIND[1];
+  private size: number = INITIAL_SIZE;
+  private choppiness: number = INITIAL_CHOPPINESS;
+  private changed: boolean = true;
+  private pingPhase: boolean = true;
+  public setWind: (x: number, y: number) => void;
+  public setSize: (newSize: number) => void;
+  public setChoppiness: (newChoppiness: number) => void;
+  public resize: (width: number, height: number) => void;
+  public render: (
+    deltaTime: number,
+    projectionMatrix: Matrix4,
+    viewMatrix: Matrix4,
+    cameraPosition: Vector3
+  ) => void;
 
-    const gl =
-      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  constructor(canvas: HTMLCanvasElement, width: number, height: number) {
+    this.canvas = canvas;
+    this.canvas.width = width;
+    this.canvas.height = height;
 
-    const windX = INITIAL_WIND[0],
-      windY = INITIAL_WIND[1],
-      size = INITIAL_SIZE,
-      choppiness = INITIAL_CHOPPINESS;
+    const gl = (canvas.getContext("webgl") ||
+      canvas.getContext("experimental-webgl")) as WebGLRenderingContext;
+    this.gl = gl;
 
-    let changed = true;
+    if (!gl) {
+      throw new Error("WebGL not supported");
+    }
 
     gl.getExtension("OES_texture_float");
     gl.getExtension("OES_texture_float_linear");
 
-    gl.clearColor.apply(gl, CLEAR_COLOR);
+    gl.clearColor(
+      CLEAR_COLOR[0],
+      CLEAR_COLOR[1],
+      CLEAR_COLOR[2],
+      CLEAR_COLOR[3]
+    );
     gl.enable(gl.DEPTH_TEST);
 
+    // Compile shaders and programs
     const fullscreenVertexShader = buildShader(
       gl,
       gl.VERTEX_SHADER,
@@ -378,19 +404,19 @@ class Simulator {
       pingTransformFramebuffer = buildFramebuffer(gl, pingTransformTexture),
       pongTransformFramebuffer = buildFramebuffer(gl, pongTransformTexture);
 
-    this.setWind = function (x, y) {
-      windX = x;
-      windY = y;
-      changed = true;
+    this.setWind = function (x: number, y: number) {
+      this.windX = x;
+      this.windY = y;
+      this.changed = true;
     };
 
     this.setSize = function (newSize) {
-      size = newSize;
-      changed = true;
+      this.size = newSize;
+      this.changed = true;
     };
 
     this.setChoppiness = function (newChoppiness) {
-      choppiness = newChoppiness;
+      this.choppiness = newChoppiness;
     };
 
     this.resize = function (width, height) {
@@ -410,15 +436,18 @@ class Simulator {
       gl.bindBuffer(gl.ARRAY_BUFFER, fullscreenVertexBuffer);
       gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
-      if (changed) {
+      if (this.changed) {
         gl.bindFramebuffer(gl.FRAMEBUFFER, initialSpectrumFramebuffer);
         gl.useProgram(initialSpectrumProgram.program);
         gl.uniform2f(
           initialSpectrumProgram.uniformLocations["u_wind"],
-          windX,
-          windY
+          this.windX,
+          this.windY
         );
-        gl.uniform1f(initialSpectrumProgram.uniformLocations["u_size"], size);
+        gl.uniform1f(
+          initialSpectrumProgram.uniformLocations["u_size"],
+          this.size
+        );
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       }
 
@@ -434,7 +463,7 @@ class Simulator {
       );
       pingPhase = !pingPhase;
       gl.uniform1f(phaseProgram.uniformLocations["u_deltaTime"], deltaTime);
-      gl.uniform1f(phaseProgram.uniformLocations["u_size"], size);
+      gl.uniform1f(phaseProgram.uniformLocations["u_size"], this.size);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
       gl.useProgram(spectrumProgram.program);
@@ -443,10 +472,10 @@ class Simulator {
         spectrumProgram.uniformLocations["u_phases"],
         pingPhase ? PING_PHASE_UNIT : PONG_PHASE_UNIT
       );
-      gl.uniform1f(spectrumProgram.uniformLocations["u_size"], size);
+      gl.uniform1f(spectrumProgram.uniformLocations["u_size"], this.size);
       gl.uniform1f(
         spectrumProgram.uniformLocations["u_choppiness"],
-        choppiness
+        this.choppiness
       );
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
@@ -496,8 +525,8 @@ class Simulator {
 
       gl.bindFramebuffer(gl.FRAMEBUFFER, normalMapFramebuffer);
       gl.useProgram(normalMapProgram.program);
-      if (changed) {
-        gl.uniform1f(normalMapProgram.uniformLocations["u_size"], size);
+      if (this.changed) {
+        gl.uniform1f(normalMapProgram.uniformLocations["u_size"], this.size);
       }
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
@@ -512,9 +541,9 @@ class Simulator {
       gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 5 * SIZE_OF_FLOAT, 0);
 
       gl.useProgram(oceanProgram.program);
-      if (changed) {
-        gl.uniform1f(oceanProgram.uniformLocations["u_size"], size);
-        changed = false;
+      if (this.changed) {
+        gl.uniform1f(oceanProgram.uniformLocations["u_size"], this.size);
+        this.changed = false;
       }
       gl.uniformMatrix4fv(
         oceanProgram.uniformLocations["u_projectionMatrix"],
