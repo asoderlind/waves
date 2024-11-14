@@ -1,24 +1,3 @@
-export const addToVector = function (out, a, b) {
-  out[0] = a[0] + b[0];
-  out[1] = a[1] + b[1];
-  out[2] = a[2] + b[2];
-  return out;
-};
-
-export const subtractFromVector = function (out, a, b) {
-  out[0] = a[0] - b[0];
-  out[1] = a[1] - b[1];
-  out[2] = a[2] - b[2];
-  return out;
-};
-
-export const multiplyVectorByScalar = function (out, v, k) {
-  out[0] = v[0] * k;
-  out[1] = v[1] * k;
-  out[2] = v[2] * k;
-  return out;
-};
-
 export const makeIdentityMatrix = function (matrix) {
   matrix[0] = 1.0;
   matrix[1] = 0.0;
