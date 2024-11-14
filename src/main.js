@@ -65,7 +65,7 @@ import {
 } from "./shared";
 
 import Arrow from "./Arrow";
-import Slider from "./Slider";
+import Slider from "./Slider.ts";
 import Camera from "./Camera";
 import Simulator from "./Simulator";
 import Profile from "./Profile";

@@ -30,7 +30,8 @@ import {
   buildShader,
   buildTexture,
   buildFramebuffer,
-} from "./shared.ts";
+} from "./shared";
+
 import {
   OCEAN_FRAGMENT_SOURCE,
   OCEAN_VERTEX_SOURCE,
@@ -40,7 +41,7 @@ import {
   INITIAL_SPECTRUM_FRAGMENT_SOURCE,
   SUBTRANSFORM_FRAGMENT_SOURCE,
   FULLSCREEN_VERTEX_SOURCE,
-} from "./Shaders.ts";
+} from "./Shaders";
 class Simulator {
   constructor(canvas, width, height) {
     var canvas = canvas;
