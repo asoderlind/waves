@@ -16,9 +16,10 @@ import {
   multiplyVectorByScalar,
   distanceBetweenVectors,
   lengthOfVector,
-  setTransformOrigin,
-  setTransform,
-} from "./shared.js";
+} from "./mathUtils.ts";
+
+import { setTransformOrigin, setTransform } from "./shared.ts";
+
 class Arrow {
   constructor(parent, valueX, valueY) {
     const arrow = [valueX * WIND_SCALE, 0.0, valueY * WIND_SCALE];
