@@ -23,13 +23,14 @@ import {
   PONG_TRANSFORM_UNIT,
 } from "./constants";
 
+import { log2 } from "./mathUtils";
+
 import {
-  log2,
   buildProgramWrapper,
   buildShader,
   buildTexture,
   buildFramebuffer,
-} from "./shared.js";
+} from "./shared.ts";
 import {
   OCEAN_FRAGMENT_SOURCE,
   OCEAN_VERTEX_SOURCE,

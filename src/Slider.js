@@ -6,7 +6,7 @@ import {
 
 import { distanceBetweenVectors, clamp } from "./mathUtils";
 
-import { setTransformOrigin, setTransform } from "./shared.js";
+import { setTransformOrigin, setTransform } from "./shared.ts";
 
 class Slider {
   constructor(
