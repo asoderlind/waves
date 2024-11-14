@@ -1,7 +1,7 @@
 // Define types for vectors and matrices
 type Vector3 = [number, number, number];
 type Vector4 = [number, number, number, number];
-type Matrix4 = number[]; // 4x4 matrix stored in a flat array
+type Matrix4 = Float32Array;
 
 // Vector operations
 export const addToVector = (out: Vector3, a: Vector3, b: Vector3): Vector3 => {
@@ -46,10 +46,20 @@ export const makeXRotationMatrix = (
   angle: number
 ): Matrix4 => {
   matrix[0] = 1.0;
+  matrix[1] = 0.0;
+  matrix[2] = 0.0;
+  matrix[3] = 0.0;
+  matrix[4] = 0.0;
   matrix[5] = Math.cos(angle);
   matrix[6] = Math.sin(angle);
+  matrix[7] = 0.0;
+  matrix[8] = 0.0;
   matrix[9] = -Math.sin(angle);
   matrix[10] = Math.cos(angle);
+  matrix[11] = 0.0;
+  matrix[12] = 0.0;
+  matrix[13] = 0.0;
+  matrix[14] = 0.0;
   matrix[15] = 1.0;
   return matrix;
 };
@@ -59,9 +69,20 @@ export const makeYRotationMatrix = (
   angle: number
 ): Matrix4 => {
   matrix[0] = Math.cos(angle);
+  matrix[1] = 0.0;
   matrix[2] = -Math.sin(angle);
+  matrix[3] = 0.0;
+  matrix[4] = 0.0;
+  matrix[5] = 1.0;
+  matrix[6] = 0.0;
+  matrix[7] = 0.0;
   matrix[8] = Math.sin(angle);
+  matrix[9] = 0.0;
   matrix[10] = Math.cos(angle);
+  matrix[11] = 0.0;
+  matrix[12] = 0.0;
+  matrix[13] = 0.0;
+  matrix[14] = 0.0;
   matrix[15] = 1.0;
   return matrix;
 };

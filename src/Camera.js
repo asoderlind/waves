@@ -15,7 +15,8 @@ import {
   makeYRotationMatrix,
   premultiplyMatrix,
   clamp,
-} from "./shared.js";
+} from "./mathUtils";
+
 class Camera {
   constructor() {
     let azimuth = INITIAL_AZIMUTH,
